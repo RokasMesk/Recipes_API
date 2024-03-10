@@ -124,7 +124,13 @@ namespace Recipe.Controllers
             };
             return Ok(response);
         }
-
-
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            var deletedRecipe = await _recipeRepository.DeleteAsync(id);
+            if (deletedRecipe == null) return NotFound();
+            return Ok(deletedRecipe);
+        }
     }
 }

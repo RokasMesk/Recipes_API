@@ -20,10 +20,18 @@ namespace Recipe.Repositories.Implementation
             return recipee;
         }
 
-        //public Task<Recipee?> DeleteAsync(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<Recipee?> DeleteAsync(int id)
+        {
+            var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingRecipe != null)
+            {
+                _db.Recipes.Remove(existingRecipe);
+                await _db.SaveChangesAsync();
+                return existingRecipe;
+            }
+            return null;
+        }
+
 
         //public Task<IEnumerable<Recipee>> GetAllAsync()
         //{

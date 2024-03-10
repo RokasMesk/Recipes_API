@@ -8,6 +8,6 @@ namespace Recipe.Repositories.Interface
         //Task<IEnumerable<Recipee>> GetAllAsync();
         Task<Recipee?> GetByIdAsync(int id);
         Task<Recipee?> UpdateAsync(Recipee recipee);
-        //Task<Recipee?> DeleteAsync(int id);
+        Task<Recipee?> DeleteAsync(int id);
     }
 }
