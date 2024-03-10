@@ -1,12 +1,12 @@
-﻿namespace Recipe.Models
+﻿namespace Recipe.Models.DTO
 {
-    public class Recipee
+    public class RecipeDTO
     {
         public int Id { get; set; }
         public string? ShortDescription { get; set; }
         public string? Description { get; set; }
         public string? ImageUrl { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
         public string? Preparation { get; set; }
         public string? SkillLevel { get; set; }
         public int? TimeForCooking { get; set; }
