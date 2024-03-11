@@ -132,5 +132,32 @@ namespace Recipe.Controllers
             if (deletedRecipe == null) return NotFound();
             return Ok(deletedRecipe);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllRecipes()
+        {
+            var recipes = await _recipeRepository.GetAllAsync();
+            // convert domain model to DTO
+            var response = new List<RecipeDTO>();
+            foreach (var recipe in recipes)
+            {
+                response.Add(new RecipeDTO
+                {
+                    Id = recipe.Id,
+                    ShortDescription = recipe.ShortDescription,
+                    Description = recipe.Description,
+                    ImageUrl = recipe.ImageUrl,
+                    Preparation = recipe.Preparation,
+                    SkillLevel = recipe.SkillLevel,
+                    TimeForCooking = recipe.TimeForCooking,
+                    Type = recipe.Type,
+                    Products = recipe.Products.Select(x => new ProductDTO
+                    {
+                        Id = x.Id,
+                        ProductName = x.ProductName
+                    }).ToList()
+                });
+            }
+            return Ok(response);
+        }
     }
 }

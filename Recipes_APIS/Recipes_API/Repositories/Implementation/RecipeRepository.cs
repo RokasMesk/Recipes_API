@@ -33,10 +33,11 @@ namespace Recipe.Repositories.Implementation
         }
 
 
-        //public Task<IEnumerable<Recipee>> GetAllAsync()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<IEnumerable<Recipee>> GetAllAsync()
+        {
+            return await _db.Recipes.Include(x => x.Products).ToListAsync();
+
+        }
 
         public async Task<Recipee?> GetByIdAsync(int id)
         {
