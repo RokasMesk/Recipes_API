@@ -35,13 +35,13 @@ namespace Recipe.Repositories.Implementation
 
         public async Task<IEnumerable<Recipee>> GetAllAsync()
         {
-            return await _db.Recipes.Include(x => x.Products).ToListAsync();
+            return await _db.Recipes.Include(x => x.Products).Include(x=> x.Type).ToListAsync();
 
         }
 
         public async Task<Recipee?> GetByIdAsync(int id)
         {
-            return await _db.Recipes.Include(x=> x.Products).
+            return await _db.Recipes.Include(x=> x.Products).Include(x=> x.Type).
                 FirstOrDefaultAsync(x => x.Id == id);
         }
 

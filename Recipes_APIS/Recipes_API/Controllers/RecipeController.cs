@@ -149,13 +149,17 @@ namespace Recipe.Controllers
                     Preparation = recipe.Preparation,
                     SkillLevel = recipe.SkillLevel,
                     TimeForCooking = recipe.TimeForCooking,
-                    Type = recipe.Type,
+                    Type = new RecipeType
+                    {
+                        Id = recipe.Type.Id,
+                        Type = recipe.Type.Type
+                    },
                     Products = recipe.Products.Select(x => new ProductDTO
                     {
                         Id = x.Id,
                         ProductName = x.ProductName
                     }).ToList()
-                });
+                }) ; 
             }
             return Ok(response);
         }
