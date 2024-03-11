@@ -47,7 +47,7 @@ namespace Recipe.Repositories.Implementation
 
         public async Task<Recipee?> UpdateAsync(Recipee recipee)
         {
-            var existingRecipe = await _db.Recipes.Include(x => x.Products).
+            var existingRecipe = await _db.Recipes.Include(x => x.Products).Include(x=> x.Type).
                 FirstOrDefaultAsync(x => x.Id == recipee.Id);
             if (existingRecipe == null)
             {
@@ -55,6 +55,7 @@ namespace Recipe.Repositories.Implementation
             }
             _db.Entry(existingRecipe).CurrentValues.SetValues(recipee);
             existingRecipe.Products = recipee.Products;
+            existingRecipe.Type = recipee.Type;
             await _db.SaveChangesAsync();
             return recipee;
             //hahahahah

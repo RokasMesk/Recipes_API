@@ -27,6 +27,7 @@ namespace Recipe.Controllers
         {
             var recipe = new Recipee
             {
+                Title = request.Title,
                 ShortDescription = request.ShortDescription,
                 Description = request.Description,
                 ImageUrl = request.ImageUrl,
@@ -54,6 +55,7 @@ namespace Recipe.Controllers
             var response = new RecipeDTO
             {
                 Id = recipe.Id,
+                Title = recipe.Title,
                 ShortDescription = recipe.ShortDescription,
                 Description = recipe.Description,
                 ImageUrl = recipe.ImageUrl,
@@ -78,6 +80,7 @@ namespace Recipe.Controllers
             var recipe = new Recipee
             {
                 Id = id,
+                Title = request.Title,
                 ShortDescription = request.ShortDescription,
                 Description = request.Description,
                 ImageUrl = request.ImageUrl,
@@ -109,6 +112,7 @@ namespace Recipe.Controllers
             var response = new RecipeDTO
             {
                 Id = recipe.Id,
+                Title = recipe.Title,
                 Description = recipe.Description,
                 ShortDescription = recipe.ShortDescription,
                 ImageUrl = recipe.ImageUrl,
@@ -143,6 +147,7 @@ namespace Recipe.Controllers
                 response.Add(new RecipeDTO
                 {
                     Id = recipe.Id,
+                    Title = recipe.Title,
                     ShortDescription = recipe.ShortDescription,
                     Description = recipe.Description,
                     ImageUrl = recipe.ImageUrl,
@@ -162,6 +167,34 @@ namespace Recipe.Controllers
                 }) ; 
             }
             return Ok(response);
+        }
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetRecipeById([FromRoute] int id)
+        {
+            var recipe = await _recipeRepository.GetByIdAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            var reponse = new RecipeDTO
+            {
+                Id = recipe.Id,
+                Title = recipe.Title,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Preparation = recipe.Preparation,
+                SkillLevel = recipe.SkillLevel,
+                TimeForCooking = recipe.TimeForCooking,
+                Type = recipe.Type,
+                Products = recipe.Products.Select(x => new ProductDTO
+                {
+                    Id = x.Id,
+                    ProductName = x.ProductName
+                }).ToList()
+            };
+            return Ok(reponse);
         }
     }
 }
