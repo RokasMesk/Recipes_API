@@ -17,13 +17,13 @@ namespace Recipe.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<RecipeType>().HasData(
-            new RecipeType { Id = 1, Type = "Vegan" },
-             new RecipeType { Id = 2, Type = "Vegetarian" },
-              new RecipeType { Id = 3, Type = "All" }
+                new RecipeType { Id = 1, Type = "Vegan" },
+                new RecipeType { Id = 2, Type = "Vegetarian" },
+                new RecipeType { Id = 3, Type = "All" }
             );
             modelBuilder.Entity<Product>().HasData(
-            new Product { Id = 1, ProductName = "Apple" },
-            new Product { Id = 2, ProductName = "Eggs" }
+                new Product { Id = 1, ProductName = "Apple" },
+                new Product { Id = 2, ProductName = "Eggs" }
             ); 
         }
     }
