@@ -163,5 +163,32 @@ namespace Recipe.Controllers
             }
             return Ok(response);
         }
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetRecipeById([FromRoute] int id)
+        {
+            var recipe = await _recipeRepository.GetByIdAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            var reponse = new RecipeDTO
+            {
+                Id = recipe.Id,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Preparation = recipe.Preparation,
+                SkillLevel = recipe.SkillLevel,
+                TimeForCooking = recipe.TimeForCooking,
+                Type = recipe.Type,
+                Products = recipe.Products.Select(x => new ProductDTO
+                {
+                    Id = x.Id,
+                    ProductName = x.ProductName
+                }).ToList()
+            };
+            return Ok(reponse);
+        }
     }
 }
