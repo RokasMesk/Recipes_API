@@ -5,7 +5,7 @@ using Recipe.Models;
 
 namespace Recipe.Data
 {
-    public class AuthDbContext:IdentityDbContext
+    public class AuthDbContext:IdentityDbContext<ApplicationUser>
     {
         public AuthDbContext (DbContextOptions<AuthDbContext> options) : base(options)
         {
