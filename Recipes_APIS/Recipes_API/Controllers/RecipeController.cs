@@ -74,7 +74,7 @@ namespace Recipe.Controllers
         }
         [HttpPut]
         [Route("{id:int}")]
-        public async Task<IActionResult> UpdateBlogPostById([FromRoute] int id, UpdateRecipeRequestDTO request)
+        public async Task<IActionResult> UpdateRecipeById([FromRoute] int id, UpdateRecipeRequestDTO request)
         {
             // Convert This from DTO to Domain model
             var recipe = new Recipee
