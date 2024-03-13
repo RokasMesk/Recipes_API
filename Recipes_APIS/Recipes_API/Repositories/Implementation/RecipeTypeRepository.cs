@@ -16,5 +16,10 @@ namespace Recipe.Repositories.Implementation
         {
             return await _db.RecipeTypes.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<IEnumerable<RecipeType>?> GetAllTypes()
+        {
+            return await _db.RecipeTypes.ToListAsync();
+        }
     }
 }

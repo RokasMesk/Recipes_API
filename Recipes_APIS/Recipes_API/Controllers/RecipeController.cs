@@ -38,6 +38,7 @@ namespace Recipe.Controllers
                 Type = new RecipeType()
 
             };
+
             foreach (var productId in request.Products)
             {
                 var existingProduct = await _productRepository.GetByIdAsync(productId);
