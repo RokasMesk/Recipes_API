@@ -196,19 +196,6 @@ namespace Recipe.Controllers
             };
             return Ok(reponse);
         }
-        //[HttpGet]
-        //[Route("title/{title}")]
-        //public async Task<IActionResult> SearchByTitle(string title)
-        //{
-        //    var result = await _recipeRepository.SearchByTitleAsync(title);
-
-        //    if (result == null)
-        //    {
-        //        return NotFound(); // Return 404 Not Found if no matching recipe is found
-        //    }
-
-        //    return Ok(result);
-        //}
         [HttpPost("search")]
         public async Task<IActionResult> SearchByTitle([FromBody] string title)
         {
