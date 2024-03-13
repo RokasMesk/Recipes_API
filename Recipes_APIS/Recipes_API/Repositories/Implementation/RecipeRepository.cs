@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.OpenApi.Services;
 using Recipe.Data;
 using Recipe.Models;
 using Recipe.Repositories.Interface;
@@ -60,5 +61,11 @@ namespace Recipe.Repositories.Implementation
             return recipee;
             //hahahahah
         }
+
+        public async Task<IEnumerable<Recipee>> SearchByTitleAsync(string title)
+        {
+            return await _db.Recipes.Where(recipee => recipee.Title.Contains(title)).ToListAsync();
+        }
+
     }
 }

@@ -26,5 +26,6 @@ namespace Recipe.Data
                 new Product { Id = 2, ProductName = "Eggs" }
             ); 
         }
+
     }
 }
