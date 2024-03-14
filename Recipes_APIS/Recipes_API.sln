@@ -5,6 +5,11 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipe", "Recipes_API\Recipe.csproj", "{6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Tests", "TestProject1\Recipes.Tests.csproj", "{FC9D1758-1C20-4CC0-AAB5-74B0E249BECB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45} = {6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A66B2B1-D81C-4CBC-B78F-0BFF3FCF4D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC9D1758-1C20-4CC0-AAB5-74B0E249BECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC9D1758-1C20-4CC0-AAB5-74B0E249BECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC9D1758-1C20-4CC0-AAB5-74B0E249BECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC9D1758-1C20-4CC0-AAB5-74B0E249BECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
