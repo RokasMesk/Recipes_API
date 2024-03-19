@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Recipe.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Azure.Core;
+using Recipe.Repositories.Interface;
+using Recipe.Models.DTO;
 
 namespace Recipe.Controllers
 {
@@ -12,16 +15,18 @@ namespace Recipe.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ITokenRepository _tokenRepository;
 
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenRepository tokenRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _tokenRepository = tokenRepository;
         }
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] Register model)
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDTO model)
         {
             if (ModelState.IsValid)
             {
@@ -35,6 +40,7 @@ namespace Recipe.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Ok("Registration successful.");
                 }
@@ -48,7 +54,7 @@ namespace Recipe.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login model)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
             var user = await _userManager.FindByEmailAsync(model.Identifier);
             if (user == null)
@@ -62,7 +68,18 @@ namespace Recipe.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return Ok("Login successful.");
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    var jwtToken = _tokenRepository.CreateJwtToken(user, roles.ToList());
+                    var response = new LoginResponseDTO
+                    {
+                        Username = user.UserName,
+                        Email = user.Email,
+                        Roles = roles.ToList(),
+                        Token = jwtToken
+                    };
+                    return Ok(response);
+                    //return Ok("Login successful.");
                 }
             }
 

@@ -1,6 +1,6 @@
-﻿namespace Recipe.Models
+﻿namespace Recipe.Models.DTO
 {
-    public class Register
+    public class RegisterRequestDTO
     {
         public string Username { get; set; }
         public string Email { get; set; }
