@@ -28,7 +28,8 @@ namespace Recipe.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
+                    IsAdmin = false
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
