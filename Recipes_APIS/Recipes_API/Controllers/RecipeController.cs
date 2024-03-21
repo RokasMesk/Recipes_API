@@ -197,8 +197,9 @@ namespace Recipe.Controllers
             };
             return Ok(reponse);
         }
-        [HttpPost("search")]
-        public async Task<IActionResult> SearchByTitle([FromBody] string title)
+        [HttpGet]
+        [Route("title/{title}")]
+        public async Task<IActionResult> SearchByTitle(string title)
         {
             if (string.IsNullOrWhiteSpace(title))
             {
