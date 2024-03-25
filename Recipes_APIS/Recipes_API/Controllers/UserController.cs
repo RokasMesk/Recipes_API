@@ -30,6 +30,13 @@ namespace Recipe.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existingUser = await _userManager.FindByEmailAsync(model.Email);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Email", "Email is already registered.");
+                    return BadRequest(ModelState);
+                }
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Username,
@@ -46,7 +53,11 @@ namespace Recipe.Controllers
                 }
                 else
                 {
-                    return BadRequest(result.Errors);
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return BadRequest(ModelState);
                 }
             }
             return BadRequest("Invalid model state.");
@@ -56,34 +67,37 @@ namespace Recipe.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Identifier);
-            if (user == null)
+            if (ModelState.IsValid)
             {
-                // User with email not found, try with username
-                user = await _userManager.FindByNameAsync(model.Identifier);
-            }
-
-            if (user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(model.Identifier);
+                if (user == null)
                 {
-                    var roles = await _userManager.GetRolesAsync(user);
-
-                    var jwtToken = _tokenRepository.CreateJwtToken(user, roles.ToList());
-                    var response = new LoginResponseDTO
-                    {
-                        Username = user.UserName,
-                        Email = user.Email,
-                        Roles = roles.ToList(),
-                        Token = jwtToken
-                    };
-                    return Ok(response);
-                    //return Ok("Login successful.");
+                    user = await _userManager.FindByNameAsync(model.Identifier);
                 }
-            }
 
-            return BadRequest("Invalid login attempt.");
+                if (user != null)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
+                    if (result.Succeeded)
+                    {
+                        var roles = await _userManager.GetRolesAsync(user);
+
+                        var jwtToken = _tokenRepository.CreateJwtToken(user, roles.ToList());
+                        var response = new LoginResponseDTO
+                        {
+                            Username = user.UserName,
+                            Email = user.Email,
+                            Roles = roles.ToList(),
+                            Token = jwtToken
+                        };
+                        return Ok(response);
+                    }
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return BadRequest(ModelState);
+            }
+            return BadRequest("Invalid model state.");
         }
 
         [HttpGet]
