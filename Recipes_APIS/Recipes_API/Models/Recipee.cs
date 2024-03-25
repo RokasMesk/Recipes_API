@@ -1,4 +1,6 @@
-﻿namespace Recipe.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Recipe.Models
 {
     public class Recipee
     {

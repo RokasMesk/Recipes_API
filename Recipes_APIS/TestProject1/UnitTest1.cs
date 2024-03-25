@@ -81,7 +81,6 @@ namespace TestProject1
             var recipeDTO = result.Value as RecipeDTO;
             Assert.AreEqual(expectedRecipe.Id, recipeDTO.Id);
             Assert.AreEqual(expectedRecipe.Title, recipeDTO.Title);
-            // Add more assertions based on expected recipe DTO data
         }
 
         [Test]
@@ -136,7 +135,6 @@ namespace TestProject1
             var recipeDTO = result.Value as RecipeDTO;
             Assert.AreEqual(expectedRecipe.Id, recipeDTO.Id);
             Assert.AreEqual(expectedRecipe.Title, recipeDTO.Title);
-            // Add more assertions based on expected recipe DTO data
         }
 
         [Test]
@@ -188,7 +186,6 @@ namespace TestProject1
             Products = new List<Product>(), // You can add related products if needed
             Type = new RecipeType { Id = 2, Type = "Type 2" } // You can create a RecipeType object
         },
-    // Add more recipes with similar data if needed
             };
 
 
@@ -205,7 +202,6 @@ namespace TestProject1
 
             var recipesDTO = result.Value as List<RecipeDTO>;
             Assert.AreEqual(recipes.Count, recipesDTO.Count);
-            // Add more assertions to check if returned recipes match expected ones
         }
 
         [Test]
@@ -241,7 +237,6 @@ namespace TestProject1
             var recipeDTO = result.Value as RecipeDTO;
             Assert.AreEqual(recipe.Id, recipeDTO.Id);
             Assert.AreEqual(recipe.Title, recipeDTO.Title);
-            // Add more assertions to check if returned recipe matches expected one
         }
 
         [Test]
@@ -289,9 +284,5 @@ namespace TestProject1
             var matchingRecipesDTO = result.Value as List<RecipeDTO>;
             Assert.AreEqual(matchingRecipes.Count, 2);
         }
-
-
-
-        // Write similar tests for other controller actions such as UpdateRecipeById, DeleteById, GetAllRecipes, GetRecipeById, and SearchByTitle
     }
 }
