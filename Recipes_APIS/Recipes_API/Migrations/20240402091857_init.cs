@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Recipe.Migrations
 {
     /// <inheritdoc />
-    public partial class identityy : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,7 @@ namespace Recipe.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -198,14 +199,14 @@ namespace Recipe.Migrations
                     SkillLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TimeForCooking = table.Column<int>(type: "int", nullable: true),
                     TypeId = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recipes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Recipes_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Recipes_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -217,7 +218,7 @@ namespace Recipe.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductRecipe",
+                name: "ProductRecipee",
                 columns: table => new
                 {
                     ProductsId = table.Column<int>(type: "int", nullable: false),
@@ -225,15 +226,15 @@ namespace Recipe.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductRecipe", x => new { x.ProductsId, x.RecipesId });
+                    table.PrimaryKey("PK_ProductRecipee", x => new { x.ProductsId, x.RecipesId });
                     table.ForeignKey(
-                        name: "FK_ProductRecipe_Products_ProductsId",
+                        name: "FK_ProductRecipee_Products_ProductsId",
                         column: x => x.ProductsId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductRecipe_Recipes_RecipesId",
+                        name: "FK_ProductRecipee_Recipes_RecipesId",
                         column: x => x.RecipesId,
                         principalTable: "Recipes",
                         principalColumn: "Id",
@@ -245,14 +246,33 @@ namespace Recipe.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                { "322ffb03-c7aa-463f-a4e6-15bbb2da3979", "322ffb03-c7aa-463f-a4e6-15bbb2da3979", "Admin", "ADMIN" },
-                { "46385bc4-f2f5-4557-a54f-5a555ddbb448", "46385bc4-f2f5-4557-a54f-5a555ddbb448", "User", "USER" }
+                    { "322ffb03-c7aa-463f-a4e6-15bbb2da3979", "322ffb03-c7aa-463f-a4e6-15bbb2da3979", "Admin", "ADMIN" },
+                    { "46385bc4-f2f5-4557-a54f-5a555ddbb448", "46385bc4-f2f5-4557-a54f-5a555ddbb448", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "fe6995fd-ed28-441f-b4cd-378ec0c046d9", 0, "17da8104-30aa-403a-89f2-2fd0c0f7bb47", "admin@gmail.com", false, false, null, "ADMIN@GMAIL.COM", null, "AQAAAAIAAYagAAAAEGYFS+DEvIlEGAtURl6aXcwr4rYS5wGPrbgFHHGztu/97SwejbnBlnAPMoehwV8sog==", null, false, "ac9ae93e-b30c-4ac9-881b-1bbe373062b0", false, "admin@gmail.com" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "IsAdmin", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "fe6995fd-ed28-441f-b4cd-378ec0c046d9", 0, "4fcc91be-b4bf-4173-9f05-7d89f514e208", "Admin@gmail.com", false, null, false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAENh0jK97l/5HvuCTuqpztwhcD+R3RaUeLufZ8pGBH/KHFf9r1W4DquJRPxoLQcJuvg==", null, false, "56f942e4-1a67-4a99-8504-9cc3ada2251e", false, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "ProductName" },
+                values: new object[,]
+                {
+                    { 1, "Apple" },
+                    { 2, "Eggs" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RecipeTypes",
+                columns: new[] { "Id", "Type" },
+                values: new object[,]
+                {
+                    { 1, "Vegan" },
+                    { 2, "Vegetarian" },
+                    { 3, "All" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -299,21 +319,22 @@ namespace Recipe.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductRecipe_RecipesId",
-                table: "ProductRecipe",
+                name: "IX_ProductRecipee_RecipesId",
+                table: "ProductRecipee",
                 column: "RecipesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recipes_ApplicationUserId",
-                table: "Recipes",
-                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_TypeId",
                 table: "Recipes",
                 column: "TypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Recipes_UserId",
+                table: "Recipes",
+                column: "UserId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -332,7 +353,7 @@ namespace Recipe.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ProductRecipe");
+                name: "ProductRecipee");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

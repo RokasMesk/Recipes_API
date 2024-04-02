@@ -14,5 +14,6 @@ namespace Recipe.Models
         public string? SkillLevel { get; set; }
         public int? TimeForCooking { get; set; }
         public RecipeType Type { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

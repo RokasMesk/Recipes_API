@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipe.Data;
 
@@ -11,12 +10,10 @@ using Recipe.Data;
 
 namespace Recipe.Migrations
 {
-    [DbContext(typeof(AuthDbContext))]
-    [Migration("20240312185008_identityy")]
-    partial class identityy
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,6 +212,9 @@ namespace Recipe.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -265,16 +265,17 @@ namespace Recipe.Migrations
                         {
                             Id = "fe6995fd-ed28-441f-b4cd-378ec0c046d9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "17da8104-30aa-403a-89f2-2fd0c0f7bb47",
-                            Email = "admin@gmail.com",
+                            ConcurrencyStamp = "4fcc91be-b4bf-4173-9f05-7d89f514e208",
+                            Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGYFS+DEvIlEGAtURl6aXcwr4rYS5wGPrbgFHHGztu/97SwejbnBlnAPMoehwV8sog==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAENh0jK97l/5HvuCTuqpztwhcD+R3RaUeLufZ8pGBH/KHFf9r1W4DquJRPxoLQcJuvg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ac9ae93e-b30c-4ac9-881b-1bbe373062b0",
+                            SecurityStamp = "56f942e4-1a67-4a99-8504-9cc3ada2251e",
                             TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
+                            UserName = "Admin"
                         });
                 });
 
@@ -291,7 +292,19 @@ namespace Recipe.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ProductName = "Eggs"
+                        });
                 });
 
             modelBuilder.Entity("Recipe.Models.RecipeType", b =>
@@ -307,7 +320,24 @@ namespace Recipe.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RecipeType");
+                    b.ToTable("RecipeTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Type = "Vegan"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Type = "Vegetarian"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Type = "All"
+                        });
                 });
 
             modelBuilder.Entity("Recipe.Models.Recipee", b =>
@@ -317,9 +347,6 @@ namespace Recipe.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -345,13 +372,16 @@ namespace Recipe.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Recipee");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -422,22 +452,19 @@ namespace Recipe.Migrations
 
             modelBuilder.Entity("Recipe.Models.Recipee", b =>
                 {
-                    b.HasOne("Recipe.Models.ApplicationUser", null)
-                        .WithMany("Recipes")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Recipe.Models.RecipeType", "Type")
                         .WithMany()
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Type");
-                });
+                    b.HasOne("Recipe.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
-            modelBuilder.Entity("Recipe.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Recipes");
+                    b.Navigation("Type");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

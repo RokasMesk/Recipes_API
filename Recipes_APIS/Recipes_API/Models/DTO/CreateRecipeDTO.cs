@@ -11,5 +11,6 @@
         public string SkillLevel { get; set; }
         public int TimeForCooking { get; set; }
         public int Type { get; set; }
+        public string Author { get; set; }
     }
 }

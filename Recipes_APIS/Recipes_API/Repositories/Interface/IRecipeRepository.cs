@@ -10,5 +10,6 @@ namespace Recipe.Repositories.Interface
         Task<Recipee?> UpdateAsync(Recipee recipee);
         Task<Recipee?> DeleteAsync(int id);
         Task<IEnumerable<Recipee?>> SearchByTitleAsync(string title);
+        Task<IEnumerable<Recipee?>> GetRecipesByUserId(string id);
     }
 }

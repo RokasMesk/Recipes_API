@@ -67,5 +67,10 @@ namespace Recipe.Repositories.Implementation
             return await _db.Recipes.Where(recipee => recipee.Title.Contains(title)).ToListAsync();
         }
 
+        public async Task<IEnumerable<Recipee?>> GetRecipesByUserId(string id)
+        {
+            var recipes = await _db.Recipes.Include(x => x.Products).Include(x => x.Type).Where(r => r.User.Id == id).ToListAsync();
+            return recipes;
+        }
     }
 }

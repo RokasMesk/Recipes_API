@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Recipe.Models;
 using Recipe.Models.DTO;
 using Recipe.Repositories.Implementation;
 using Recipe.Repositories.Interface;
 using System.Data;
+using System.Security.Claims;
 
 namespace Recipe.Controllers
 {
@@ -16,15 +18,26 @@ namespace Recipe.Controllers
         private readonly IRecipeRepository _recipeRepository;
         private readonly IProductRepository _productRepository;
         private readonly IRecipeTypeRepository _recipeTypeRepository;
-        public RecipeController(IRecipeRepository recipeRepository, IProductRepository productRepo, IRecipeTypeRepository recipeTypeRepository)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public RecipeController(IRecipeRepository recipeRepository, IProductRepository productRepo, IRecipeTypeRepository recipeTypeRepository, UserManager<ApplicationUser> userManager)
         {
             _recipeRepository = recipeRepository;
             _productRepository = _productRepository = productRepo;
             _recipeTypeRepository=recipeTypeRepository;
+            _userManager= userManager;
         }
         [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeDTO request)
         {
+            var authorEmail = request.Author;
+            if (string.IsNullOrEmpty(authorEmail))
+            {
+                return BadRequest("Author email is required.");
+            }
+
+            var user = await _userManager.FindByEmailAsync(authorEmail);
+           
+
             var recipe = new Recipee
             {
                 Title = request.Title,
@@ -35,7 +48,8 @@ namespace Recipe.Controllers
                 SkillLevel = request.SkillLevel,
                 TimeForCooking = request.TimeForCooking,
                 Products = new List<Product>(),
-                Type = new RecipeType()
+                Type = new RecipeType(), 
+                User = new ApplicationUser()
 
             };
 
@@ -51,6 +65,11 @@ namespace Recipe.Controllers
             if (existingType != null)
             {
                 recipe.Type = existingType;
+            }
+          
+            if (user != null)
+            {
+                recipe.User = user;
             }
             recipe = await _recipeRepository.CreateAsync(recipe);
             var response = new RecipeDTO
@@ -215,5 +234,49 @@ namespace Recipe.Controllers
 
             return Ok(result);
         }
+        [HttpGet]
+        [Route("user/{userName}")]
+        public async Task<IActionResult> GetRecipesByUserName([FromRoute] string userName)
+        {
+            // Retrieve the user by user name
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                return NotFound($"User with user name '{userName}' not found.");
+            }
+
+            // Retrieve recipes associated with the user
+            var recipes = await _recipeRepository.GetRecipesByUserId(user.Id);
+            if (recipes == null || !recipes.Any())
+            {
+                return NotFound($"No recipes found for user '{userName}'.");
+            }
+
+            // Convert domain model to DTO
+            var response = recipes.Select(recipe => new RecipeDTO
+            {
+                Id = recipe.Id,
+                Title = recipe.Title,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Preparation = recipe.Preparation,
+                SkillLevel = recipe.SkillLevel,
+                TimeForCooking = recipe.TimeForCooking,
+                Type = new RecipeType
+                {
+                    Id = recipe.Type.Id,
+                    Type = recipe.Type.Type
+                },
+                Products = recipe.Products.Select(x => new ProductDTO
+                {
+                    Id = x.Id,
+                    ProductName = x.ProductName
+                }).ToList()
+            }).ToList();
+
+            return Ok(response);
+        }
+
     }
 }
