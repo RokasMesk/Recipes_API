@@ -183,7 +183,8 @@ namespace Recipe.Controllers
                     {
                         Id = x.Id,
                         ProductName = x.ProductName
-                    }).ToList()
+                    }).ToList(),
+                    RecipeCreatorUserName = recipe.User.UserName,
                 }) ; 
             }
             return Ok(response);
@@ -212,7 +213,8 @@ namespace Recipe.Controllers
                 {
                     Id = x.Id,
                     ProductName = x.ProductName
-                }).ToList()
+                }).ToList(),
+                RecipeCreatorUserName = recipe.User.UserName
             };
             return Ok(reponse);
         }
@@ -272,7 +274,8 @@ namespace Recipe.Controllers
                 {
                     Id = x.Id,
                     ProductName = x.ProductName
-                }).ToList()
+                }).ToList(),
+                RecipeCreatorUserName = user.UserName
             }).ToList();
 
             return Ok(response);

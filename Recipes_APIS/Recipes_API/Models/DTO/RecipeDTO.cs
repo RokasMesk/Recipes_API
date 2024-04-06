@@ -12,5 +12,6 @@
         public string? SkillLevel { get; set; }
         public int? TimeForCooking { get; set; }
         public RecipeType Type { get; set; }
+        public string? RecipeCreatorUserName { get; set; }
     }
 }
