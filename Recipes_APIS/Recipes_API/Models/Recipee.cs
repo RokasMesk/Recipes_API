@@ -15,5 +15,6 @@ namespace Recipe.Models
         public int? TimeForCooking { get; set; }
         public RecipeType Type { get; set; }
         public ApplicationUser User { get; set; }
+        public ICollection<UserFavoriteRecipe> UserFavorites { get; set; }
     }
 }

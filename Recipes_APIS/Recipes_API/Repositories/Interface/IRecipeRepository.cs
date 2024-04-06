@@ -11,5 +11,9 @@ namespace Recipe.Repositories.Interface
         Task<Recipee?> DeleteAsync(int id);
         Task<IEnumerable<Recipee?>> SearchByTitleAsync(string title);
         Task<IEnumerable<Recipee?>> GetRecipesByUserId(string id);
+
+        Task AddRecipeToFavoritesAsync(string userId, int recipeId);
+        Task RemoveRecipeFromFavoritesAsync(string userId, int recipeId);
+        Task<List<Recipee>> GetFavoriteRecipesForUserAsync(string userId); // Assuming you want Recipee objects
     }
 }

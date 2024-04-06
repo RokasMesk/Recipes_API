@@ -15,9 +15,24 @@ namespace Recipe.Data
         public DbSet<Recipee> Recipes { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<RecipeType> RecipeTypes { get; set; }
+        public DbSet<UserFavoriteRecipe> UserFavoriteRecipes { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<UserFavoriteRecipe>()
+                .HasKey(ufr => new { ufr.UserId, ufr.RecipeeId });
+
+            builder.Entity<UserFavoriteRecipe>()
+                .HasOne(ufr => ufr.User)
+                .WithMany(u => u.FavoriteRecipes)
+                .HasForeignKey(ufr => ufr.UserId);
+
+            builder.Entity<UserFavoriteRecipe>()
+                .HasOne(ufr => ufr.Recipee)
+                .WithMany(r => r.UserFavorites)
+                .HasForeignKey(ufr => ufr.RecipeeId);
+
             builder.Entity<RecipeType>().HasData(
                 new RecipeType { Id = 1, Type = "Vegan" },
                 new RecipeType { Id = 2, Type = "Vegetarian" },

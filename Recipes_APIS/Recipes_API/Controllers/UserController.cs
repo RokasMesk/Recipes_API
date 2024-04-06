@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Recipe.Repositories.Interface;
 using Recipe.Models.DTO;
+using Recipe.Repositories.Implementation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+
 
 namespace Recipe.Controllers
 {
@@ -16,12 +21,14 @@ namespace Recipe.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITokenRepository _tokenRepository;
+        private readonly IRecipeRepository _recipeRepository;
 
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenRepository tokenRepository)
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenRepository tokenRepository, IRecipeRepository recipeRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenRepository = tokenRepository;
+            _recipeRepository = recipeRepository;
         }
 
         [HttpPost]
@@ -88,7 +95,8 @@ namespace Recipe.Controllers
                             Username = user.UserName,
                             Email = user.Email,
                             Roles = roles.ToList(),
-                            Token = jwtToken
+                            Token = jwtToken,
+                            UserId = user.Id
                         };
                         return Ok(response);
                     }
@@ -110,6 +118,64 @@ namespace Recipe.Controllers
                 return Ok("User is registered.");
             }
             return NotFound("User is not registered.");
+        }
+
+        [HttpPost("users/{userId}/favorites/{recipeId}")]
+        public async Task<IActionResult> AddFavorite(string userId, int recipeId)
+        {
+            // Check if the recipe exists 
+            var recipe = await _recipeRepository.GetByIdAsync(recipeId);
+            if (recipe == null)
+            {
+                return NotFound("Recipe not found.");
+            }
+
+            await _recipeRepository.AddRecipeToFavoritesAsync(userId, recipeId);
+
+            return Ok("Recipe added to favorites");
+        }
+
+        [HttpDelete("users/{userId}/favorites/{recipeId}")]
+        public async Task<IActionResult> RemoveFavorite(string userId, int recipeId)
+        {
+            await _recipeRepository.RemoveRecipeFromFavoritesAsync(userId, recipeId);
+
+            return Ok("Recipe removed from favorites");
+        }
+
+        [HttpGet("users/{userId}/favorites")]
+        public async Task<IActionResult> GetAllFavorites(string userId)
+        {
+
+            var favoriteRecipes = await _recipeRepository.GetFavoriteRecipesForUserAsync(userId);
+
+            // Convert to RecipeDTOs 
+
+            var response = favoriteRecipes.Select(recipe => new RecipeDTO
+            {
+                Id = recipe.Id,
+                Title = recipe.Title,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Preparation = recipe.Preparation,
+                SkillLevel = recipe.SkillLevel,
+                TimeForCooking = recipe.TimeForCooking,
+                Type = new RecipeType
+                {
+                    Id = recipe.Type.Id,
+                    Type = recipe.Type.Type
+                },
+                Products = recipe.Products.Select(x => new ProductDTO
+                {
+                    Id = x.Id,
+                    ProductName = x.ProductName
+                }).ToList(),
+                RecipeCreatorUserName = recipe.User.UserName,
+            });
+
+            return Ok(response);
+
         }
     }
 }

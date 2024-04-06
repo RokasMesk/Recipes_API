@@ -72,5 +72,43 @@ namespace Recipe.Repositories.Implementation
             var recipes = await _db.Recipes.Include(x => x.Products).Include(x => x.Type).Where(r => r.User.Id == id).ToListAsync();
             return recipes;
         }
+
+        public async Task AddRecipeToFavoritesAsync(string userId, int recipeId)
+        {
+            var favoriteRecord = new UserFavoriteRecipe
+            {
+                UserId = userId,
+                RecipeeId = recipeId
+            };
+
+            _db.UserFavoriteRecipes.Add(favoriteRecord);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task RemoveRecipeFromFavoritesAsync(string userId, int recipeId)
+        {
+            var favoriteToRemove = await _db.UserFavoriteRecipes
+                                           .FirstOrDefaultAsync(ufr => ufr.UserId == userId && ufr.RecipeeId == recipeId);
+
+            if (favoriteToRemove != null)
+            {
+                _db.UserFavoriteRecipes.Remove(favoriteToRemove);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Recipee>> GetFavoriteRecipesForUserAsync(string userId)
+        {
+            return await _db.UserFavoriteRecipes
+                .Where(ufr => ufr.UserId == userId)
+                .Include(ufr => ufr.Recipee)
+                    .ThenInclude(recipe => recipe.Type)  // Include Type
+                .Include(ufr => ufr.Recipee)
+                    .ThenInclude(recipe => recipe.Products) // Include Products  
+                .Include(ufr => ufr.Recipee.User)  // Include User
+                .Select(ufr => ufr.Recipee)
+                .ToListAsync();
+
+        }
     }
 }
