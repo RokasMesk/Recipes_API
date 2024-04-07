@@ -55,16 +55,5 @@ namespace Recipe.Controllers
             }
             return NotFound();
         }
-        [HttpGet("search")]
-        public async Task<IActionResult> SearchProducts([FromQuery] string productName)
-        {
-            if (string.IsNullOrWhiteSpace(productName))
-            {
-                return BadRequest("Product name cannot be empty");
-            }
-
-            var products = await _productRepository.SearchByProductNameAsync(productName);
-            return Ok(products);
-        }
     }
 }

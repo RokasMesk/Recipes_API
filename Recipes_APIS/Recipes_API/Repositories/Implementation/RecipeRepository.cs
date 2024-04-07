@@ -110,5 +110,13 @@ namespace Recipe.Repositories.Implementation
                 .ToListAsync();
 
         }
+        public async Task<List<Recipee>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
+        {
+            var recipes = await _db.Recipes
+                .Where(recipe => recipe.Products.Any(product => selectedProductNames.Contains(product.ProductName)))
+                .ToListAsync();
+
+            return recipes;
+        }
     }
 }

@@ -280,6 +280,16 @@ namespace Recipe.Controllers
 
             return Ok(response);
         }
+        [HttpPost("search")]
+        public async Task<IActionResult> SearchRecipes([FromBody] List<string> selectedProductNames)
+        {
+            if (selectedProductNames == null || !selectedProductNames.Any())
+            {
+                return BadRequest("No product selected");
+            }
 
+            var recipes = await _recipeRepository.SearchBySelectedProductNamesAsync(selectedProductNames);
+            return Ok(recipes);
+        }
     }
 }

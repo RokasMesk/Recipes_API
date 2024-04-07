@@ -9,6 +9,6 @@ namespace Recipe.Repositories.Interface
         Task<Product?> GetByIdAsync(int id);
         Task<Product?> UpdateAsync(Product product);
         Task<Product?> DeleteAsync(int id);
-        Task<IEnumerable<Product>> SearchByProductNameAsync(string productName);
+        Task<List<Product>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames);
     }
 }

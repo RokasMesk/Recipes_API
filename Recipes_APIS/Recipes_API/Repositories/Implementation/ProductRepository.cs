@@ -55,9 +55,12 @@ namespace Recipe.Repositories.Implementation
             await _db.SaveChangesAsync();
             return product;
         }
-        public async Task<IEnumerable<Product>> SearchByProductNameAsync(string productName)
+        public async Task<List<Product>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
         {
-            return await _db.Products.Where(p => p.ProductName.Contains(productName)).ToListAsync();
+            // Assuming there's a DbSet<Product> in your DbContext named Products
+            return await _db.Products
+                .Where(p => selectedProductNames.Contains(p.ProductName))
+                .ToListAsync();
         }
     }
 }
