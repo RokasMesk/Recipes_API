@@ -55,5 +55,9 @@ namespace Recipe.Repositories.Implementation
             await _db.SaveChangesAsync();
             return product;
         }
+        public async Task<IEnumerable<Product>> SearchByProductNameAsync(string productName)
+        {
+            return await _db.Products.Where(p => p.ProductName.Contains(productName)).ToListAsync();
+        }
     }
 }
