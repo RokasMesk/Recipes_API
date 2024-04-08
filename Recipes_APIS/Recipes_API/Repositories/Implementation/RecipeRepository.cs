@@ -59,7 +59,6 @@ namespace Recipe.Repositories.Implementation
             existingRecipe.Type = recipee.Type;
             await _db.SaveChangesAsync();
             return recipee;
-            //hahahahah
         }
 
         public async Task<IEnumerable<Recipee>> SearchByTitleAsync(string title)
@@ -112,9 +111,11 @@ namespace Recipe.Repositories.Implementation
         }
         public async Task<List<Recipee>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
         {
-            var recipes = await _db.Recipes
-                .Where(recipe => recipe.Products.Any(product => selectedProductNames.Contains(product.ProductName)))
+            var recipes = await _db.Recipes.Where(recipe => recipe.Products.Any(product => selectedProductNames.Contains(product.ProductName))).Include(x=>x.Type).Include(x=>x.User)
                 .ToListAsync();
+
+            //var recipes = await _db.Recipes.Include(x => x.Products).Include(x => x.Type).Where(r => r.User.Id == id).ToListAsync();
+            //return recipes;
 
             return recipes;
         }
