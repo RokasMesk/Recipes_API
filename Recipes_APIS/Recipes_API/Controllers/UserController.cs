@@ -177,5 +177,34 @@ namespace Recipe.Controllers
             return Ok(response);
 
         }
+        [HttpPost]
+        [Route("change")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.UserEmail); // Get the current user from the request context
+                if (user == null)
+                {
+                    return BadRequest("User not found.");
+                }
+
+                // Change the user's password
+                var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return Ok("Password changed successfully.");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return BadRequest(ModelState);
+                }
+            }
+            return BadRequest("Invalid model state.");
+        }
     }
 }
