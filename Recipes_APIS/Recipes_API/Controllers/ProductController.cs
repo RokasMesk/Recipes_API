@@ -40,20 +40,17 @@ namespace Recipe.Controllers
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
-            if (product == null)
+            if (product == null || product.ProductName == null) // Modified condition
             {
                 return NotFound();
             }
-            if (product.ProductName != null)
+            var response = new ProductDTO
             {
-                var reponse = new ProductDTO
-                {
-                    Id = product.Id,
-                    ProductName = product.ProductName
-                };
-                return Ok(reponse);
-            }
-            return NotFound();
+                Id = product.Id,
+                ProductName = product.ProductName
+            };
+            return Ok(response);
         }
+
     }
 }
