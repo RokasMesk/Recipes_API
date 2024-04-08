@@ -48,7 +48,8 @@ namespace TestProject1
                 SkillLevel = "Intermediate",
                 TimeForCooking = 30, // Cooking time in minutes
                 Products = new int[] { 1, 2, 3 }, // IDs of products related to this recipe
-                Type = 1 // ID of recipe type
+                Type = 1, // ID of recipe type
+                Author="Test"
             };
 
             var expectedRecipe = new Recipee
@@ -62,7 +63,7 @@ namespace TestProject1
                 SkillLevel = createRecipeDTO.SkillLevel,
                 TimeForCooking = createRecipeDTO.TimeForCooking,
                 Products = new List<Product>(), // Mocked list of related products
-                Type = new RecipeType { Id = createRecipeDTO.Type } // Mocked recipe type
+                Type = new RecipeType { Id = createRecipeDTO.Type }, // Mocked recipe type
             };
 
             // Mock product repository behavior
@@ -165,7 +166,7 @@ namespace TestProject1
         {
             // Arrange
             var recipes = new List<Recipee>
-{
+    {
         new Recipee
         {
             Id = 1,
@@ -177,7 +178,8 @@ namespace TestProject1
             SkillLevel = "Beginner",
             TimeForCooking = 20, // Cooking time in minutes for Recipe 1
             Products = new List<Product>(), // You can add related products if needed
-            Type = new RecipeType { Id = 1, Type = "Type 1" } // You can create a RecipeType object
+            Type = new RecipeType { Id = 1, Type = "Type 1" }, // You can create a RecipeType object,
+            User=new ApplicationUser()
         },
         new Recipee
         {
@@ -190,10 +192,10 @@ namespace TestProject1
             SkillLevel = "Intermediate",
             TimeForCooking = 30, // Cooking time in minutes for Recipe 2
             Products = new List<Product>(), // You can add related products if needed
-            Type = new RecipeType { Id = 2, Type = "Type 2" } // You can create a RecipeType object
+            Type = new RecipeType { Id = 2, Type = "Type 2" }, // You can create a RecipeType object
+             User=new ApplicationUser()
         },
-            };
-
+    };
 
             _recipeRepositoryMock.Setup(repo => repo.GetAllAsync())
                                  .ReturnsAsync(recipes);
@@ -226,7 +228,8 @@ namespace TestProject1
                 SkillLevel = "Beginner",
                 TimeForCooking = 20, // Cooking time in minutes for Recipe 1
                 Products = new List<Product>(), // You can add related products if needed
-                Type = new RecipeType { Id = 1, Type = "Type 1" }
+                Type = new RecipeType { Id = 1, Type = "Type 1" },
+                User=new ApplicationUser()
             };
 
             _recipeRepositoryMock.Setup(repo => repo.GetByIdAsync(recipeId))
