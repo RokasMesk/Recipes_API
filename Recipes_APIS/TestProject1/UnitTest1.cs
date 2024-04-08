@@ -1,22 +1,24 @@
-using NUnit.Framework;
-using Moq;
-using Recipe.Controllers;
-using Recipe.Models;
-using Recipe.Models.DTO;
-using Recipe.Repositories.Interface;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+//using NUnit.Framework;
+//using Moq;
+//using Recipe.Controllers;
+//using Recipe.Models;
+//using Recipe.Models.DTO;
+//using Recipe.Repositories.Interface;
+//using Microsoft.AspNetCore.Mvc;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Identity;
 
-namespace TestProject1
-{
-    public class RecipeControllerTests
-    {
+//namespace TestProject1
+//{
+//    public class RecipeControllerTests
+//    {
 //        private RecipeController _controller;
 //        private Mock<IRecipeRepository> _recipeRepositoryMock;
 //        private Mock<IProductRepository> _productRepositoryMock;
 //        private Mock<IRecipeTypeRepository> _recipeTypeRepositoryMock;
+//        private Mock<UserManager<ApplicationUser>> _mockUserManager;
 
 //        [SetUp]
 //        public void Setup()
@@ -25,7 +27,11 @@ namespace TestProject1
 //            _productRepositoryMock = new Mock<IProductRepository>();
 //            _recipeTypeRepositoryMock = new Mock<IRecipeTypeRepository>();
 
-//            _controller = new RecipeController(_recipeRepositoryMock.Object, _productRepositoryMock.Object, _recipeTypeRepositoryMock.Object);
+//            _mockUserManager = new Mock<UserManager<ApplicationUser>>(
+//                Mock.Of<IUserStore<ApplicationUser>>(),
+//                null, null, null, null, null, null, null, null);
+
+//            _controller = new RecipeController(_recipeRepositoryMock.Object, _productRepositoryMock.Object, _recipeTypeRepositoryMock.Object, _mockUserManager.Object);
 //        }
 
 //        [Test]
@@ -284,5 +290,5 @@ namespace TestProject1
 //            var matchingRecipesDTO = result.Value as List<RecipeDTO>;
 //            Assert.AreEqual(matchingRecipes.Count, 2);
 //        }
-    }
-}
+//    }
+//}
