@@ -277,8 +277,8 @@ namespace Recipe.Tests.Controllers
             var userId = "testUser";
             var recipeList = new List<Recipee>
             {
-                new Recipee { Id = 1, Title = "Recipe 1", Products = new List<Product> { new Product { Id = 101, ProductName = "Ingredient 1" } } },
-                new Recipee { Id = 2, Title = "Recipe 2", Products = new List<Product> { new Product { Id = 102, ProductName = "Ingredient 2" } } }
+                new Recipee { Id = 1, Title = "Recipe 1", Products = new List<Product>() },
+                new Recipee { Id = 2, Title = "Recipe 2", Products = new List<Product>() }
             };
             _mockRecipeRepository.Setup(m => m.GetFavoriteRecipesForUserAsync(userId)).ReturnsAsync(recipeList);
 
