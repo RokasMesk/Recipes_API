@@ -31,6 +31,11 @@ namespace TestProject1
                 Mock.Of<IUserStore<ApplicationUser>>(),
                 null, null, null, null, null, null, null, null);
 
+            var user = new ApplicationUser { UserName = "testUser", Id = "testUserId" };
+
+            _mockUserManager.Setup(um => um.FindByNameAsync(user.UserName))
+                            .ReturnsAsync(user);
+
             _controller = new RecipeController(_recipeRepositoryMock.Object, _productRepositoryMock.Object, _recipeTypeRepositoryMock.Object, _mockUserManager.Object);
         }
 
@@ -49,7 +54,7 @@ namespace TestProject1
                 TimeForCooking = 30, // Cooking time in minutes
                 Products = new int[] { 1, 2, 3 }, // IDs of products related to this recipe
                 Type = 1, // ID of recipe type
-                Author="Test"
+                Author = "Test"
             };
 
             var expectedRecipe = new Recipee
@@ -229,7 +234,7 @@ namespace TestProject1
                 TimeForCooking = 20, // Cooking time in minutes for Recipe 1
                 Products = new List<Product>(), // You can add related products if needed
                 Type = new RecipeType { Id = 1, Type = "Type 1" },
-                User=new ApplicationUser()
+                User = new ApplicationUser()
             };
 
             _recipeRepositoryMock.Setup(repo => repo.GetByIdAsync(recipeId))
@@ -251,14 +256,67 @@ namespace TestProject1
         [Test]
         public async Task SearchByTitle_ValidTitle_ReturnsMatchingRecipes()
         {
-
-            string titleToSearch = "t";
+            // Arrange
+            string titleToSearch = "Test";
             var matchingRecipes = new List<Recipee>
     {
         new Recipee
         {
             Id = 1,
-            Title = "test",
+            Title = "Test Recipe 1",
+            ShortDescription = "Short description for Test Recipe 1",
+            Description = "Detailed description for Test Recipe 1",
+            ImageUrl = "https://example.com/test_recipe1_image.jpg",
+            Preparation = "Preparation steps for Test Recipe 1...",
+            SkillLevel = "Beginner",
+            TimeForCooking = 20,
+            Products = new List<Product>(),
+            Type = new RecipeType { Id = 1, Type = "Type 1" }
+        },
+        new Recipee
+        {
+            Id = 2,
+            Title = "Test Recipe 2",
+            ShortDescription = "Short description for Test Recipe 2",
+            Description = "Detailed description for Test Recipe 2",
+            ImageUrl = "https://example.com/test_recipe2_image.jpg",
+            Preparation = "Preparation steps for Test Recipe 2...",
+            SkillLevel = "Intermediate",
+            TimeForCooking = 30,
+            Products = new List<Product>(),
+            Type = new RecipeType { Id = 2, Type = "Type 2" }
+        },
+    };
+
+            _recipeRepositoryMock.Setup(repo => repo.SearchByTitleAsync(titleToSearch))
+                                 .ReturnsAsync(matchingRecipes);
+
+            // Act
+            var result = await _controller.SearchByTitle(titleToSearch) as ObjectResult;
+
+            // Assert
+            ClassicAssert.NotNull(result);
+            ClassicAssert.AreEqual(200, result.StatusCode);
+            ClassicAssert.IsInstanceOf<List<Recipee>>(result.Value);
+
+            var recipes = result.Value as List<Recipee>;
+            ClassicAssert.AreEqual(matchingRecipes.Count, recipes.Count);
+            ClassicAssert.AreEqual(matchingRecipes[0].Id, recipes[0].Id);
+            ClassicAssert.AreEqual(matchingRecipes[1].Title, recipes[1].Title);
+        }
+
+
+        [Test]
+        public async Task GetRecipesByUserName_UserExists_ReturnsRecipes()
+        {
+            string userName = "testUser";
+            var user = new ApplicationUser { UserName = userName, Id = "testUserId" };
+            var recipes = new List<Recipee>
+    {
+        new Recipee
+        {
+            Id = 1,
+            Title = "Recipe 1",
             ShortDescription = "Short description for Recipe 1",
             Description = "Detailed description for Recipe 1",
             ImageUrl = "https://example.com/recipe1_image.jpg",
@@ -271,7 +329,7 @@ namespace TestProject1
         new Recipee
         {
             Id = 2,
-            Title = "tttt",
+            Title = "Recipe 2",
             ShortDescription = "Short description for Recipe 2",
             Description = "Detailed description for Recipe 2",
             ImageUrl = "https://example.com/recipe2_image.jpg",
@@ -283,15 +341,21 @@ namespace TestProject1
         },
     };
 
-            _recipeRepositoryMock.Setup(repo => repo.SearchByTitleAsync(titleToSearch))
-                                 .ReturnsAsync(matchingRecipes);
+            _recipeRepositoryMock.Setup(repo => repo.GetRecipesByUserId(user.Id)).ReturnsAsync(recipes);
 
-            var result = await _controller.SearchByTitle(titleToSearch) as ObjectResult;
+            var result = await _controller.GetRecipesByUserName(userName) as ObjectResult;
+
             ClassicAssert.NotNull(result);
             ClassicAssert.AreEqual(200, result.StatusCode);
+            ClassicAssert.IsInstanceOf<List<RecipeDTO>>(result.Value);
 
-            var matchingRecipesDTO = result.Value as List<RecipeDTO>;
-            ClassicAssert.AreEqual(matchingRecipes.Count, 2);
+            var recipesDTO = result.Value as List<RecipeDTO>;
+
+            ClassicAssert.AreEqual(recipes.Count, recipesDTO.Count);
+            ClassicAssert.AreEqual(recipes[0].Id, recipesDTO[0].Id);
+            ClassicAssert.AreEqual(recipes[1].Title, recipesDTO[1].Title);
         }
+
+
     }
 }

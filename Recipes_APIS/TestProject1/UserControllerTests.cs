@@ -290,6 +290,110 @@ namespace Recipe.Tests.Controllers
             var okResult = result as OkObjectResult;
             ClassicAssert.NotNull(okResult);
         }
+        [Test]
+        public async Task ChangePassword_ValidRequest_ReturnsOk()
+        {
+            // Arrange
+            var model = new ChangePasswordDTO
+            {
+                UserEmail = "test@example.com",
+                OldPassword = "oldPassword",
+                NewPassword = "newPassword"
+            };
+
+            var user = new ApplicationUser { Email = model.UserEmail };
+            _mockUserManager.Setup(m => m.FindByEmailAsync(model.UserEmail)).ReturnsAsync(user);
+            _mockUserManager.Setup(m => m.ChangePasswordAsync(user, model.OldPassword, model.NewPassword))
+                            .ReturnsAsync(IdentityResult.Success);
+
+            // Act
+            var result = await _controller.ChangePassword(model) as ObjectResult;
+
+            // Assert
+            ClassicAssert.NotNull(result);
+            ClassicAssert.AreEqual(200, result.StatusCode);
+            ClassicAssert.AreEqual("Password changed successfully.", result.Value);
+        }
+
+        [Test]
+        public async Task ChangePassword_UserNotFound_ReturnsBadRequest()
+        {
+            // Arrange
+            var model = new ChangePasswordDTO
+            {
+                UserEmail = "test@example.com",
+                OldPassword = "oldPassword",
+                NewPassword = "newPassword"
+            };
+
+            _mockUserManager.Setup(m => m.FindByEmailAsync(model.UserEmail)).ReturnsAsync((ApplicationUser)null);
+
+            // Act
+            var result = await _controller.ChangePassword(model) as BadRequestObjectResult;
+
+            // Assert
+            ClassicAssert.NotNull(result);
+            ClassicAssert.AreEqual(400, result.StatusCode);
+            ClassicAssert.AreEqual("User not found.", result.Value);
+        }
+
+        [Test]
+        public async Task ChangePassword_InvalidModelState_ReturnsBadRequest()
+        {
+            // Arrange
+            var model = new ChangePasswordDTO(); // ModelState will be invalid
+
+            _controller.ModelState.AddModelError("UserEmail", "Email is required");
+
+            // Act
+            var result = await _controller.ChangePassword(model) as BadRequestObjectResult;
+
+            // Assert
+            ClassicAssert.NotNull(result);
+            ClassicAssert.AreEqual(400, result.StatusCode);
+            ClassicAssert.AreEqual("Invalid model state.", result.Value);
+        }
+
+        [Test]
+        public async Task ChangePassword_PasswordChangeFailed_ReturnsBadRequest()
+        {
+            // Arrange
+            var model = new ChangePasswordDTO
+            {
+                UserEmail = "test@example.com",
+                OldPassword = "oldPassword",
+                NewPassword = "newPassword"
+            };
+
+            var user = new ApplicationUser { Email = model.UserEmail };
+            _mockUserManager.Setup(m => m.FindByEmailAsync(model.UserEmail)).ReturnsAsync(user);
+            var errors = new List<IdentityError>
+    {
+        new IdentityError { Description = "Error 1" },
+        new IdentityError { Description = "Error 2" }
+    };
+            var identityResult = IdentityResult.Failed(errors.ToArray());
+            _mockUserManager.Setup(m => m.ChangePasswordAsync(user, model.OldPassword, model.NewPassword))
+                            .ReturnsAsync(identityResult);
+
+            // Act
+            var result = await _controller.ChangePassword(model) as BadRequestObjectResult;
+
+            // Assert
+            ClassicAssert.NotNull(result);
+            ClassicAssert.AreEqual(400, result.StatusCode);
+            ClassicAssert.IsInstanceOf<SerializableError>(result.Value);
+
+            var errorsDictionary = (SerializableError)result.Value;
+            ClassicAssert.IsTrue(errorsDictionary.ContainsKey(string.Empty));
+
+            var errorList = (string[])errorsDictionary[string.Empty];
+            ClassicAssert.AreEqual(errors.Count, errorList.Length);
+            foreach (var error in errors)
+            {
+                ClassicAssert.Contains(error.Description, errorList);
+            }
+        }
 
     }
 }
