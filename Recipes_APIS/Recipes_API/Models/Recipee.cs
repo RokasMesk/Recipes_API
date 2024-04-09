@@ -16,5 +16,8 @@ namespace Recipe.Models
         public RecipeType Type { get; set; }
         public ApplicationUser User { get; set; }
         public ICollection<UserFavoriteRecipe> UserFavorites { get; set; }
+        public double Rating { get; set; } = 0;
+        public int RatedPeopleCount { get; set; } = 0;
+        public ICollection<UserRecipeRating> UserRatings { get; set; } = new List<UserRecipeRating>();
     }
 }

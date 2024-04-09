@@ -117,5 +117,54 @@ namespace Recipe.Repositories.Implementation
 
             return recipes;
         }
+
+        public async Task AddRatingAsync(string userId, int recipeId, float rating)
+        {
+            var recipe = await _db.Recipes.FindAsync(recipeId);
+            if (recipe == null)
+            {
+                throw new ArgumentException($"Recipe with ID {recipeId} not found.");
+            }
+
+            var existingRating = await _db.UserRecipeRatings
+                .FirstOrDefaultAsync(r => r.UserId == userId && r.RecipeeId == recipeId);
+
+            if (existingRating != null)
+            {
+                existingRating.RecipeRating = rating;
+                var totalRating = recipe.Rating * recipe.RatedPeopleCount;
+                totalRating -= recipe.Rating;
+                totalRating += rating;
+                recipe.Rating = totalRating / recipe.RatedPeopleCount;
+            }
+            else
+            {
+                recipe.RatedPeopleCount++;
+                var totalRating = recipe.Rating * (recipe.RatedPeopleCount - 1); // Exclude the new rating
+                totalRating += rating; // Add new rating
+                recipe.Rating = totalRating / recipe.RatedPeopleCount;
+
+                _db.UserRecipeRatings.Add(new UserRecipeRating
+                {
+                    UserId = userId,
+                    RecipeeId = recipeId,
+                    RecipeRating = rating
+                });
+            }
+
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<float> GetAverageRatingAsync(string userId, int recipeId)
+        {
+            var ratings = await _db.UserRecipeRatings
+                .Where(r => r.RecipeeId == recipeId)
+                .Where(r => r.UserId == userId)
+                .FirstOrDefaultAsync();
+            if (ratings == null)
+                return -1;
+
+            return ratings.RecipeRating;
+        }
     }
 }

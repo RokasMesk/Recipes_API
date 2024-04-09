@@ -16,5 +16,7 @@ namespace Recipe.Repositories.Interface
         Task RemoveRecipeFromFavoritesAsync(string userId, int recipeId);
         Task<List<Recipee>> GetFavoriteRecipesForUserAsync(string userId); // Assuming you want Recipee objects
         Task<List<Recipee>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames);
+        Task AddRatingAsync(string userId, int recipeId, float rating);
+        Task<float> GetAverageRatingAsync(string userId, int recipeId);
     }
 }
