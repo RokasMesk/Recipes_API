@@ -20,7 +20,7 @@ namespace Recipe.Controllers
         public async Task<IActionResult> GetAllRecipeTypesAsync()
         {
             var recipeTypes = await _recipeTypeRepository.GetAllTypes();
-            
+
             //if (recipeTypes != null) return Ok(recipeTypes);
             //return NotFound();
             var response = new List<RecipeTypeDTO>();
