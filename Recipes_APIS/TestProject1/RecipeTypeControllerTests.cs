@@ -1,13 +1,14 @@
-﻿using NUnit.Framework;
-using Moq;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Recipe.Controllers;
-using Recipe.Models.DTO;
-using Recipe.Repositories;
-using Recipe.Repositories.Interface;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using Recipe.Controllers;
+using Recipe.Models;
+using Recipe.Models.DTO;
+using Recipe.Repositories.Interface;
 
 namespace Recipe.Type.Controllers
 {
@@ -27,10 +28,10 @@ namespace Recipe.Type.Controllers
         public async Task GetAllRecipeTypesAsync_ReturnsOkObjectResultWithData()
         {
             // Arrange
-            var recipeTypes = new List<RecipeTypeDTO>
+            var recipeTypes = new List<RecipeType>
             {
-                new RecipeTypeDTO { Id = 1, Type = "Type1" },
-                new RecipeTypeDTO { Id = 2, Type = "Type2" }
+                new RecipeType { Id = 1, Type = "Type1" },
+                new RecipeType { Id = 2, Type = "Type2" }
             };
             _mockRecipeTypeRepository.Setup(repo => repo.GetAllTypes()).ReturnsAsync(recipeTypes);
 
@@ -46,14 +47,13 @@ namespace Recipe.Type.Controllers
             var responseData = okResult.Value as List<RecipeTypeDTO>;
             ClassicAssert.IsNotNull(responseData);
             ClassicAssert.AreEqual(recipeTypes.Count, responseData.Count);
-            // You can further assert specific data if needed
         }
 
         [Test]
         public async Task GetAllRecipeTypesAsync_ReturnsOkObjectResultWithNoData()
         {
             // Arrange
-            List<RecipeTypeDTO> recipeTypes = null;
+            List<RecipeType> recipeTypes = null;
             _mockRecipeTypeRepository.Setup(repo => repo.GetAllTypes()).ReturnsAsync(recipeTypes);
 
             // Act

@@ -24,6 +24,10 @@ namespace Recipe.Controllers
             //if (recipeTypes != null) return Ok(recipeTypes);
             //return NotFound();
             var response = new List<RecipeTypeDTO>();
+            if (recipeTypes == null)
+            {
+                return Ok(recipeTypes);
+            }
             foreach (var type in recipeTypes)
             {
                 response.Add(new RecipeTypeDTO

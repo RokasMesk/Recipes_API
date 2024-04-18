@@ -185,6 +185,8 @@ namespace Recipe.Controllers
                         ProductName = x.ProductName
                     }).ToList(),
                     RecipeCreatorUserName = recipe.User.UserName,
+                    Rating = recipe.Rating,
+                    RatedPeopleCount = recipe.RatedPeopleCount,
                 }) ; 
             }
             return Ok(response);
@@ -290,6 +292,22 @@ namespace Recipe.Controllers
 
             var recipes = await _recipeRepository.SearchBySelectedProductNamesAsync(selectedProductNames);
             return Ok(recipes);
+        }
+
+        [HttpPost("Rate")]
+        public async Task<IActionResult> RateRecipe([FromBody] RecipeRatingDTO ratingDTO)
+        {
+            await _recipeRepository.AddRatingAsync(ratingDTO.UserId, ratingDTO.RecipeId, ratingDTO.Rating);
+
+            return Ok();
+        }
+
+        [HttpGet("GetRating")]
+        public async Task<IActionResult> GetRecipeRating(string userId, int id)
+        {
+            var averageRating = await _recipeRepository.GetAverageRatingAsync(userId, id);
+
+            return Ok(averageRating);
         }
     }
 }
