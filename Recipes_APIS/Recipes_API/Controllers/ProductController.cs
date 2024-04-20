@@ -4,6 +4,7 @@ using Recipe.Models.DTO;
 using Recipe.Models;
 using Recipe.Repositories.Interface;
 using Recipe.Repositories.Implementation;
+using Microsoft.AspNetCore.Identity;
 
 namespace Recipe.Controllers
 {
@@ -51,6 +52,24 @@ namespace Recipe.Controllers
             };
             return Ok(response);
         }
+		[HttpPost]
+		public async Task<IActionResult> CreateProduct([FromBody] ProductCreateDTO request)
+		{
 
-    }
+			var procuct = new Product
+			{
+				ProductName = request.ProductName
+
+			};
+			var productFromDb = await _productRepository.CreateAsync(procuct);
+            var response = new ProductDTO
+            {
+                Id = productFromDb.Id,
+                ProductName=productFromDb.ProductName
+
+			};
+			return Ok(response);
+		}
+
+	}
 }

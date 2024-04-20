@@ -31,13 +31,13 @@ namespace Recipe.Tests.Controllers
                 null, null, null, null, null, null, null, null);
 
             _mockSignInManager = new Mock<SignInManager<ApplicationUser>>(
-                _mockUserManager.Object, // Provide UserManager<ApplicationUser>
-                Mock.Of<IHttpContextAccessor>(), // Provide HttpContextAccessor
-                Mock.Of<IUserClaimsPrincipalFactory<ApplicationUser>>(), // Provide IUserClaimsPrincipalFactory<ApplicationUser>
-                null, // Configure IdentityOptions if needed
-                null, // Configure ILogger<SignInManager<ApplicationUser>> if needed
-                null, // Configure IAuthenticationSchemeProvider if needed
-                null); // Configure IUserConfirmation<ApplicationUser> if needed
+                _mockUserManager.Object, 
+                Mock.Of<IHttpContextAccessor>(), 
+                Mock.Of<IUserClaimsPrincipalFactory<ApplicationUser>>(), 
+                null,
+                null, 
+                null, 
+                null); 
 
             _mockTokenRepository = new Mock<ITokenRepository>();
             _mockRecipeRepository = new Mock<IRecipeRepository>();
