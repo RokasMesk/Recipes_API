@@ -263,7 +263,7 @@ namespace TestProject1
         new Recipee
         {
             Id = 1,
-            Title = "Test Recipe 1",
+            Title = "Test result",
             ShortDescription = "Short description for Test Recipe 1",
             Description = "Detailed description for Test Recipe 1",
             ImageUrl = "https://example.com/test_recipe1_image.jpg",
@@ -276,7 +276,7 @@ namespace TestProject1
         new Recipee
         {
             Id = 2,
-            Title = "Test Recipe 2",
+            Title = "Test result 2",
             ShortDescription = "Short description for Test Recipe 2",
             Description = "Detailed description for Test Recipe 2",
             ImageUrl = "https://example.com/test_recipe2_image.jpg",
@@ -301,7 +301,7 @@ namespace TestProject1
 
             var recipes = result.Value as List<Recipee>;
             ClassicAssert.AreEqual(matchingRecipes.Count, recipes.Count);
-            ClassicAssert.AreEqual(matchingRecipes[0].Id, recipes[0].Id);
+            ClassicAssert.AreEqual(matchingRecipes[0].Title, recipes[0].Title);
             ClassicAssert.AreEqual(matchingRecipes[1].Title, recipes[1].Title);
         }
 
