@@ -17,6 +17,28 @@ namespace Recipe.Controllers
         {
             _productRepository = productRepository;
         }
+        [HttpPut("verify/{id}")]
+        public async Task<IActionResult> UpdateVerificationForProduct(int id)
+        {
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product is null)
+            {
+                return NotFound();
+            }
+            var updatedProduct =await  _productRepository.UpdateVerifiedAsync(product);
+            if (updatedProduct != null)
+            {
+                var response = new ProductDTO
+                {
+                    Id = updatedProduct.Id,
+                    ProductName = updatedProduct.ProductName
+                };
+                return Ok(response);
+			}
+            return NotFound();
+            
+
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
@@ -36,7 +58,27 @@ namespace Recipe.Controllers
             }
             return Ok(response);
         }
-        [HttpGet]
+		// GET: api/Product/nonverified
+		[HttpGet("nonverified")]
+		public async Task<IActionResult> GetNonVerifiedProducts()
+		{
+			var nonVerifiedProducts = await _productRepository.GetAllNonVerifiedProducts();
+			// convert domain model to DTO
+			var response = new List<ProductDTO>();
+			foreach (var product in nonVerifiedProducts)
+			{
+				if (product.ProductName != null)
+				{
+					response.Add(new ProductDTO
+					{
+						Id = product.Id,
+						ProductName = product.ProductName
+					});
+				}
+			}
+			return Ok(response);
+		}
+		[HttpGet]
         [Route("{id:int}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
