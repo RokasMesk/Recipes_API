@@ -18,5 +18,7 @@ namespace Recipe.Repositories.Interface
         Task<List<Recipee>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames);
         Task AddRatingAsync(string userId, int recipeId, float rating);
         Task<float> GetAverageRatingAsync(string userId, int recipeId);
+        Task AddCommentAsync(Comment comment);
+        Task<IEnumerable<Comment>> GetCommentsByRecipeIdAsync(int recipeId);
     }
 }

@@ -17,6 +17,7 @@ namespace Recipe.Data
         public DbSet<RecipeType> RecipeTypes { get; set; }
         public DbSet<UserFavoriteRecipe> UserFavoriteRecipes { get; set; }
         public DbSet<UserRecipeRating> UserRecipeRatings { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -46,6 +47,11 @@ namespace Recipe.Data
                 .HasOne(ur => ur.Recipee)
                 .WithMany(r => r.UserRatings)
                 .HasForeignKey(ur => ur.RecipeeId);
+
+            builder.Entity<Comment>()
+               .HasOne(c => c.Recipe)
+               .WithMany(r => r.Comments)
+               .HasForeignKey(c => c.RecipeId);
 
             builder.Entity<RecipeType>().HasData(
                 new RecipeType { Id = 1, Type = "Vegan" },

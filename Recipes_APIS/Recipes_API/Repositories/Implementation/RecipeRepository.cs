@@ -166,5 +166,18 @@ namespace Recipe.Repositories.Implementation
 
             return ratings.RecipeRating;
         }
+
+        public async Task AddCommentAsync(Comment comment)
+        {
+            _db.Comments.Add(comment);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Comment>> GetCommentsByRecipeIdAsync(int recipeId)
+        {
+            return await _db.Comments
+                .Where(c => c.RecipeId == recipeId)
+                .ToListAsync();
+        }
     }
 }
