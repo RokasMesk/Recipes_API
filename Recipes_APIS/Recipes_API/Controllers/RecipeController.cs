@@ -309,5 +309,36 @@ namespace Recipe.Controllers
 
             return Ok(averageRating);
         }
+
+        [HttpPost("{recipeId:int}/comments")]
+        public async Task<IActionResult> AddComment(CommentDTO comment) 
+        {
+            var commentInsert = new Comment
+            {
+                Text = comment.Comment,
+                PostedAt = DateTime.UtcNow,
+                UserId = comment.UserId,
+                RecipeId = comment.RecipeId,
+                AuthorName = comment.AuthorName,
+            };
+
+            // Save the comment
+            await _recipeRepository.AddCommentAsync(commentInsert);
+
+            return Ok(); // Comment added successfully
+        }
+
+        [HttpGet("{recipeId:int}/comments")]
+        public async Task<IActionResult> GetCommentsByRecipeId(int recipeId)
+        {
+            var comments = await _recipeRepository.GetCommentsByRecipeIdAsync(recipeId);
+
+            if (comments == null || !comments.Any())
+            {
+                return NotFound($"No comments found for recipe with ID '{recipeId}'.");
+            }
+
+            return Ok(comments);
+        }
     }
 }

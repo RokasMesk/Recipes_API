@@ -33,10 +33,13 @@ namespace Recipe.Repositories.Implementation
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await _db.Products.ToListAsync();
+            return await _db.Products.Where(x=> x.IsVerified==true).ToListAsync();
         }
-
-        public async Task<Product?> GetByIdAsync(int id)
+		public async Task<IEnumerable<Product>> GetAllNonVerifiedProducts()
+		{
+			return await _db.Products.Where(x => x.IsVerified==false).ToListAsync();
+		}
+		public async Task<Product?> GetByIdAsync(int id)
         {
             return await _db.Products.
                 FirstOrDefaultAsync(x => x.Id == id);
@@ -55,7 +58,21 @@ namespace Recipe.Repositories.Implementation
             await _db.SaveChangesAsync();
             return product;
         }
-        public async Task<List<Product>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
+        public async Task<Product?> UpdateVerifiedAsync(Product product)
+        {
+            var existingProduct = await _db.Products.FirstOrDefaultAsync(x => x.Id==product.Id);
+            if (existingProduct == null)
+            {
+                return null;
+            }
+            existingProduct.IsVerified= true;
+			_db.Entry(existingProduct).CurrentValues.SetValues(product);
+
+			await _db.SaveChangesAsync();
+			return existingProduct;
+		}
+
+		public async Task<List<Product>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
         {
             // Assuming there's a DbSet<Product> in your DbContext named Products
             return await _db.Products

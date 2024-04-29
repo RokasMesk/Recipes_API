@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipe.Data;
 
@@ -11,9 +12,11 @@ using Recipe.Data;
 namespace Recipe.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240420192139_verify attribute for product")]
+    partial class verifyattributeforproduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,53 +268,18 @@ namespace Recipe.Migrations
                         {
                             Id = "fe6995fd-ed28-441f-b4cd-378ec0c046d9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52df7cf1-3a25-436b-8737-022ec63421d3",
+                            ConcurrencyStamp = "fa4af37d-002c-4a95-9b8b-769109e16f88",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELnVahEMh/uVzSW+uCLiAWuWJB8q60fhhdLxyBfZeDOOzxFVq7U27ZDmQxUPfq6WBQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOIJgJCW3ozFyFfxFkOhMnPHG6CJsKPV99k3LH7ZmVAH/0QlmaEAknos1SDPp2Wfjg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0273abe-ed61-4d5a-bcfe-7250d4d6a447",
+                            SecurityStamp = "c4def582-5698-4744-b366-a88c2e1e3f73",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("Recipe.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PostedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Recipe.Models.Product", b =>
@@ -529,25 +497,6 @@ namespace Recipe.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Recipe.Models.Comment", b =>
-                {
-                    b.HasOne("Recipe.Models.Recipee", "Recipe")
-                        .WithMany("Comments")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Recipe.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Recipe.Models.Recipee", b =>
                 {
                     b.HasOne("Recipe.Models.RecipeType", "Type")
@@ -612,8 +561,6 @@ namespace Recipe.Migrations
 
             modelBuilder.Entity("Recipe.Models.Recipee", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("UserFavorites");
 
                     b.Navigation("UserRatings");

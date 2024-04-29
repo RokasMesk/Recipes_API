@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipe.Data;
 
@@ -11,9 +12,11 @@ using Recipe.Data;
 namespace Recipe.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240421172137_komentarai")]
+    partial class komentarai
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,15 +268,15 @@ namespace Recipe.Migrations
                         {
                             Id = "fe6995fd-ed28-441f-b4cd-378ec0c046d9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52df7cf1-3a25-436b-8737-022ec63421d3",
+                            ConcurrencyStamp = "cf49da3a-dbd1-47dd-9544-f46c4980ab0e",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELnVahEMh/uVzSW+uCLiAWuWJB8q60fhhdLxyBfZeDOOzxFVq7U27ZDmQxUPfq6WBQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELOgIxwUNokSqkQewZ3yHmEEmCy44szVNG8NgrB4ynsL+VbGEmVBTshqqKWRvT/eSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0273abe-ed61-4d5a-bcfe-7250d4d6a447",
+                            SecurityStamp = "f1eda083-d279-4ddb-8524-85cb5a1fcd9f",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -286,10 +289,6 @@ namespace Recipe.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PostedAt")
                         .HasColumnType("datetime2");

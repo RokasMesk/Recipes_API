@@ -19,5 +19,6 @@ namespace Recipe.Models
         public double Rating { get; set; } = 0;
         public int RatedPeopleCount { get; set; } = 0;
         public ICollection<UserRecipeRating> UserRatings { get; set; } = new List<UserRecipeRating>();
+        public ICollection<Comment> Comments { get; set; }
     }
 }
