@@ -23,5 +23,6 @@ namespace Recipe.Models
         public int RatedPeopleCount { get; set; } = 0;
         public ICollection<UserRecipeRating> UserRatings { get; set; } = new List<UserRecipeRating>();
         public ICollection<Comment> Comments { get; set; }
+        public bool IsVerified { get; set; } = false;
     }
 }

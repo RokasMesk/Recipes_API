@@ -20,5 +20,7 @@ namespace Recipe.Repositories.Interface
         Task<float> GetAverageRatingAsync(string userId, int recipeId);
         Task AddCommentAsync(Comment comment);
         Task<IEnumerable<Comment>> GetCommentsByRecipeIdAsync(int recipeId);
+        Task<IEnumerable<Recipee>> GetAllNonVerifiedRecipes();
+        Task<Recipee?> UpdateVerifiedAsync(Recipee recipe);
     }
 }

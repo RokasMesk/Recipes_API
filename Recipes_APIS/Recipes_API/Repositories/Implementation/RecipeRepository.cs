@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.OpenApi.Services;
 using Recipe.Data;
 using Recipe.Models;
+using Recipe.Models.DTO;
 using Recipe.Repositories.Interface;
 #pragma warning disable CS8602
 #pragma warning disable CS8604
@@ -183,5 +184,74 @@ namespace Recipe.Repositories.Implementation
                 .Where(c => c.RecipeId == recipeId)
                 .ToListAsync();
         }
+        public async Task<Recipee?> UpdateVerifiedAsync(Recipee recipee)
+        {
+            var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == recipee.Id);
+            if (existingRecipe == null)
+            {
+                return null;
+            }
+
+            existingRecipe.IsVerified = true;
+            // Update the verified fields
+            existingRecipe.Title = recipee.Title;
+            existingRecipe.ShortDescription = recipee.ShortDescription;
+            existingRecipe.Description = recipee.Description;
+            existingRecipe.ImageUrl = recipee.ImageUrl;
+            // Update other properties as needed
+
+            await _db.SaveChangesAsync();
+            return existingRecipe;
+        }
+
+        public async Task<IEnumerable<Recipee>> GetAllNonVerifiedRecipes()
+        {
+            var nonVerifiedRecipes = await _db.Recipes.Where(x => !x.IsVerified).ToListAsync();
+            var recipeDTOs = nonVerifiedRecipes.Select(recipe => new Recipee
+            {
+                Id = recipe.Id,
+                Title = recipe.Title,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                // Map other properties as needed
+            }).ToList();
+            return recipeDTOs;
+        }
+
+        //public async Task<IEnumerable<Recipee>> IRecipeRepository.GetAllNonVerifiedRecipes()
+        //{
+        //    var nonVerifiedRecipes = await _db.Recipes.Where(x => !x.IsVerified).ToListAsync();
+        //    var recipeDTOs = nonVerifiedRecipes.Select(recipe => new RecipeDTO
+        //    {
+        //        Id = recipe.Id,
+        //        Title = recipe.Title,
+        //        ShortDescription = recipe.ShortDescription,
+        //        Description = recipe.Description,
+        //        ImageUrl = recipe.ImageUrl,
+        //        // Map other properties as needed
+        //    }).ToList();
+        //    return recipeDTOs;
+        //}
+
+        //public async Task<Recipee?> UpdateVerifiedAsync(Recipee recipe)
+        //{
+        //    var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == recipe.Id);
+        //    if (existingRecipe == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    existingRecipe.IsVerified = true;
+        //    // Update the verified fields
+        //    existingRecipe.Title = RecipeDTO.Title;
+        //    existingRecipe.ShortDescription = RecipeDTO.ShortDescription;
+        //    existingRecipe.Description = RecipeDTO.Description;
+        //    existingRecipe.ImageUrl = recipeDto.ImageUrl;
+        //    // Update other properties as needed
+
+        //    await _db.SaveChangesAsync();
+        //    return existingRecipe;
+        //}
     }
 }

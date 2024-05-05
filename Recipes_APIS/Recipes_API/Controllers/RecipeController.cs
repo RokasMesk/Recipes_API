@@ -92,6 +92,29 @@ namespace Recipe.Controllers
             };
             return Ok(response);
         }
+        [HttpGet("nonverified")]
+        public async Task<IActionResult> GetNonVerifiedRecipes()
+        {
+            var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
+            var response = new List<RecipeDTO>();
+
+            foreach (var recipe in nonVerifiedRecipes)
+            {
+                if (recipe.Title != null)
+                {
+                    response.Add(new RecipeDTO
+                    {
+                        Id = recipe.Id,
+                        Title = recipe.Title,
+                        ShortDescription = recipe.ShortDescription,
+                        Description = recipe.Description,
+                        ImageUrl = recipe.ImageUrl,
+                        // Map other properties as needed
+                    });
+                }
+            }
+            return Ok(response);
+        }
 
         [HttpPut]
         [Route("{id:int}")]
@@ -343,5 +366,30 @@ namespace Recipe.Controllers
 
             return Ok(comments);
         }
+        [HttpPut("verify/{id}")]
+        public async Task<IActionResult> UpdateVerificationForRecipe(int id)
+        {
+            var recipe = await _recipeRepository.GetByIdAsync(id);
+            if (recipe is null)
+            {
+                return NotFound();
+            }
+
+            var updatedRecipe = await _recipeRepository.UpdateVerifiedAsync(recipe);
+
+            if (updatedRecipe != null && updatedRecipe.Title != null)
+            {
+                var response = new RecipeDTO
+                {
+                    Id = updatedRecipe.Id,
+                    Title = updatedRecipe.Title,
+                    // Map other properties as needed
+                };
+                return Ok(response);
+            }
+
+            return NotFound();
+        }
+
     }
 }
