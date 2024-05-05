@@ -36,7 +36,7 @@ namespace Recipe.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(authorEmail);
-           
+
 
             var recipe = new Recipee
             {
@@ -48,7 +48,7 @@ namespace Recipe.Controllers
                 SkillLevel = request.SkillLevel,
                 TimeForCooking = request.TimeForCooking,
                 Products = new List<Product>(),
-                Type = new RecipeType(), 
+                Type = new RecipeType(),
                 User = new ApplicationUser()
 
             };
@@ -66,7 +66,7 @@ namespace Recipe.Controllers
             {
                 recipe.Type = existingType;
             }
-          
+
             if (user != null)
             {
                 recipe.User = user;
@@ -86,12 +86,13 @@ namespace Recipe.Controllers
                 Products = recipe.Products.Select(x => new ProductDTO
                 {
                     Id = x.Id,
-                    ProductName = x.ProductName
+                    ProductName = x.ProductName == null ? "" : x.ProductName,
                 }).ToList()
 
             };
             return Ok(response);
         }
+
         [HttpPut]
         [Route("{id:int}")]
         public async Task<IActionResult> UpdateRecipeById([FromRoute] int id, UpdateRecipeRequestDTO request)
@@ -142,7 +143,7 @@ namespace Recipe.Controllers
                 Products = recipe.Products.Select(x => new ProductDTO
                 {
                     Id = x.Id,
-                    ProductName = x.ProductName
+                    ProductName = x.ProductName == null ? "" : x.ProductName,
                 }).ToList(),
                 Type = recipe.Type
             };
@@ -182,7 +183,7 @@ namespace Recipe.Controllers
                     Products = recipe.Products.Select(x => new ProductDTO
                     {
                         Id = x.Id,
-                        ProductName = x.ProductName
+                        ProductName = x.ProductName == null ? "" : x.ProductName,
                     }).ToList(),
                     RecipeCreatorUserName = recipe.User.UserName,
                     Rating = recipe.Rating,
@@ -214,7 +215,7 @@ namespace Recipe.Controllers
                 Products = recipe.Products.Select(x => new ProductDTO
                 {
                     Id = x.Id,
-                    ProductName = x.ProductName
+                    ProductName = x.ProductName == null ? "" : x.ProductName,
                 }).ToList(),
                 RecipeCreatorUserName = recipe.User.UserName
             };
@@ -256,8 +257,9 @@ namespace Recipe.Controllers
                 return NotFound($"No recipes found for user '{userName}'.");
             }
 
-            // Convert domain model to DTO
-            var response = recipes.Select(recipe => new RecipeDTO
+            var response = recipes
+                .Where(recipe => recipe is not null)
+                .Select(recipe => new RecipeDTO
             {
                 Id = recipe.Id,
                 Title = recipe.Title,
@@ -275,10 +277,11 @@ namespace Recipe.Controllers
                 Products = recipe.Products.Select(x => new ProductDTO
                 {
                     Id = x.Id,
-                    ProductName = x.ProductName
+                    ProductName = x.ProductName == null ? "" : x.ProductName,
                 }).ToList(),
                 RecipeCreatorUserName = user.UserName
             }).ToList();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             return Ok(response);
         }

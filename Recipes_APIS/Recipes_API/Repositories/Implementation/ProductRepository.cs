@@ -2,6 +2,8 @@
 using Recipe.Data;
 using Recipe.Models;
 using Recipe.Repositories.Interface;
+#pragma warning disable CS8604
+#pragma warning disable S1125
 
 namespace Recipe.Repositories.Implementation
 {

@@ -1,0 +1,10 @@
+z
+oC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\obj\Debug\net7.0\Recipes.Tests.AssemblyInfo.csutf-8Œ
+€C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.csutf-8|
+qC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\obj\Debug\net7.0\Recipes.Tests.GlobalUsings.g.csutf-8|
+qC:\Users\ASUS\.nuget\packages\microsoft.net.test.sdk\17.9.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.csutf-8S
+JC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\Usings.csutf-8`
+WC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\UserControllerTests.csutf-8f
+]C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\RecipeTypeControllerTests.csutf-8b
+YC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\RecipeControllerTests.csutf-8c
+ZC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\TestProject1\ProductControllerTests.csutf-8

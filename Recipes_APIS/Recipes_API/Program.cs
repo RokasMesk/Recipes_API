@@ -9,6 +9,7 @@ using Recipe.Data;
 using Recipe.Models;
 using Recipe.Repositories.Implementation;
 using Recipe.Repositories.Interface;
+#pragma warning disable CS8604
 
 var builder = WebApplication.CreateBuilder(args);
 

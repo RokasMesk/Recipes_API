@@ -26,7 +26,7 @@ namespace Recipe.Controllers
                 return NotFound();
             }
             var updatedProduct =await  _productRepository.UpdateVerifiedAsync(product);
-            if (updatedProduct != null)
+            if (updatedProduct != null && updatedProduct.ProductName != null)
             {
                 var response = new ProductDTO
                 {

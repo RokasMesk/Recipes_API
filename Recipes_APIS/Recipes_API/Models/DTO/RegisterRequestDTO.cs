@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CS8618
+#pragma warning disable S101
+
+using System.ComponentModel.DataAnnotations;
 
 namespace Recipe.Models.DTO
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-
+#pragma warning disable CS8981
 #nullable disable
 
 namespace Recipe.Migrations

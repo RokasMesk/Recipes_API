@@ -7,6 +7,8 @@ using Recipe.Repositories.Interface;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+#pragma warning disable CS8602
+#pragma warning disable CS8604
 
 namespace Recipe.Repositories.Implementation
 {
