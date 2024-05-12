@@ -116,7 +116,7 @@ namespace Recipe.Repositories.Implementation
         }
         public async Task<List<Recipee>> SearchBySelectedProductNamesAsync(List<string> selectedProductNames)
         {
-            var recipes = await _db.Recipes.Where(recipe => recipe.Products.Any(product => selectedProductNames.Contains(product.ProductName))).Include(x=>x.Type).Include(x=>x.User)
+            var recipes = await _db.Recipes.Where(recipe => recipe.Products.Any(product => selectedProductNames.Contains(product.ProductName))).Include(x=>x.Type).Include(x=>x.User).Select(x=>x)
                 .ToListAsync();
 
 

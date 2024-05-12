@@ -308,17 +308,46 @@ namespace Recipe.Controllers
 
             return Ok(response);
         }
-        [HttpPost("search")]
-        public async Task<IActionResult> SearchRecipes([FromBody] List<string> selectedProductNames)
-        {
-            if (selectedProductNames == null || !selectedProductNames.Any())
-            {
-                return BadRequest("No product selected");
-            }
 
-            var recipes = await _recipeRepository.SearchBySelectedProductNamesAsync(selectedProductNames);
-            return Ok(recipes);
+        [HttpPost("search")]
+        public async Task<IActionResult> SearchRecipesNew([FromBody] List<string> selectedProductNames)
+        {
+            var recipes = await _recipeRepository.GetAllAsync();
+            // convert domain model to DTO
+            var response = new List<RecipeDTO>();
+            foreach (var recipe in recipes)
+            {
+                if (selectedProductNames.All(selectedProductName => recipe.Products.Any(product => product.ProductName == selectedProductName)))
+                {
+                    response.Add(new RecipeDTO
+                    {
+                        Id = recipe.Id,
+                        Title = recipe.Title,
+                        ShortDescription = recipe.ShortDescription,
+                        Description = recipe.Description,
+                        ImageUrl = recipe.ImageUrl,
+                        Preparation = recipe.Preparation,
+                        SkillLevel = recipe.SkillLevel,
+                        TimeForCooking = recipe.TimeForCooking,
+                        Type = new RecipeType
+                        {
+                            Id = recipe.Type.Id,
+                            Type = recipe.Type.Type
+                        },
+                        Products = recipe.Products.Select(x => new ProductDTO
+                        {
+                            Id = x.Id,
+                            ProductName = x.ProductName == null ? "" : x.ProductName,
+                        }).ToList(),
+                        RecipeCreatorUserName = recipe.User.UserName,
+                        Rating = recipe.Rating,
+                        RatedPeopleCount = recipe.RatedPeopleCount,
+                    });
+                }
+            }
+            return Ok(response);
         }
+        
 
         [HttpPost("Rate")]
         public async Task<IActionResult> RateRecipe([FromBody] RecipeRatingDTO ratingDTO)
