@@ -184,9 +184,9 @@ namespace Recipe.Repositories.Implementation
                 .Where(c => c.RecipeId == recipeId)
                 .ToListAsync();
         }
-        public async Task<Recipee?> UpdateVerifiedAsync(Recipee recipee)
+        public async Task<Recipee?> UpdateVerifiedAsync(Recipee recipe)
         {
-            var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == recipee.Id);
+            var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == recipe.Id);
             if (existingRecipe == null)
             {
                 return null;
@@ -194,10 +194,10 @@ namespace Recipe.Repositories.Implementation
 
             existingRecipe.IsVerified = true;
             // Update the verified fields
-            existingRecipe.Title = recipee.Title;
-            existingRecipe.ShortDescription = recipee.ShortDescription;
-            existingRecipe.Description = recipee.Description;
-            existingRecipe.ImageUrl = recipee.ImageUrl;
+            existingRecipe.Title = recipe.Title;
+            existingRecipe.ShortDescription = recipe.ShortDescription;
+            existingRecipe.Description = recipe.Description;
+            existingRecipe.ImageUrl = recipe.ImageUrl;
             // Update other properties as needed
 
             await _db.SaveChangesAsync();

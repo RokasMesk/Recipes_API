@@ -13,6 +13,8 @@ C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421172137_komentarai.Designer.cs
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421182110_komentarai_v2.cs
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421182110_komentarai_v2.Designer.cs
+C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240505220524_AddIsVerifiedToRecipee.cs
+C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240505220524_AddIsVerifiedToRecipee.Designer.cs
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\ApplicationUser.cs
 C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\Comment.cs

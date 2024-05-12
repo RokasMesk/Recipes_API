@@ -488,9 +488,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 44,
+                  "startLine": 45,
                   "startColumn": 58,
-                  "endLine": 44,
+                  "endLine": 45,
                   "endColumn": 66
                 }
               }
@@ -509,52 +509,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 46,
+                  "startLine": 47,
                   "startColumn": 60,
-                  "endLine": 46,
+                  "endLine": 47,
                   "endColumn": 68
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 68,
-                  "startColumn": 52,
-                  "endLine": 68,
-                  "endColumn": 60
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 70,
-                  "startColumn": 56,
-                  "endLine": 70,
-                  "endColumn": 63
                 }
               }
             }
@@ -683,6 +641,69 @@
           }
         },
         {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 52,
+                  "endLine": 69,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 56,
+                  "endLine": 71,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 100,
+                  "endLine": 80,
+                  "endColumn": 113
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "CS8600",
           "level": "warning",
           "message": "Converting null literal or possible null value to non-nullable type.",
@@ -725,27 +746,6 @@
           }
         },
         {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 79,
-                  "startColumn": 100,
-                  "endLine": 79,
-                  "endColumn": 113
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS8618",
           "level": "warning",
           "message": "Non-nullable field '_mockProductRepository' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
@@ -757,9 +757,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 17,
+                  "startLine": 18,
                   "startColumn": 42,
-                  "endLine": 17,
+                  "endLine": 18,
                   "endColumn": 64
                 }
               }
@@ -770,9 +770,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 17,
+                  "startLine": 18,
                   "startColumn": 42,
-                  "endLine": 17,
+                  "endLine": 18,
                   "endColumn": 64
                 }
               }
@@ -794,9 +794,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 18,
+                  "startLine": 19,
                   "startColumn": 35,
-                  "endLine": 18,
+                  "endLine": 19,
                   "endColumn": 46
                 }
               }
@@ -807,9 +807,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 18,
+                  "startLine": 19,
                   "startColumn": 35,
-                  "endLine": 18,
+                  "endLine": 19,
                   "endColumn": 46
                 }
               }
@@ -994,6 +994,27 @@
           }
         },
         {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 194,
+                  "startColumn": 32,
+                  "endLine": 194,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "CS8602",
           "level": "warning",
           "message": "Dereference of a possibly null reference.",
@@ -1009,27 +1030,6 @@
                   "startColumn": 41,
                   "endLine": 166,
                   "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 194,
-                  "startColumn": 32,
-                  "endLine": 194,
-                  "endColumn": 62
                 }
               }
             }
@@ -1150,6 +1150,27 @@
           }
         },
         {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 250,
+                  "startColumn": 85,
+                  "endLine": 250,
+                  "endColumn": 98
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "CS8602",
           "level": "warning",
           "message": "Dereference of a possibly null reference.",
@@ -1186,27 +1207,6 @@
                   "startColumn": 59,
                   "endLine": 303,
                   "endColumn": 66
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 250,
-                  "startColumn": 85,
-                  "endLine": 250,
-                  "endColumn": 98
                 }
               }
             }
@@ -1796,6 +1796,156 @@
           "locations": [
             {
               "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 13,
+                  "endLine": 86,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 13,
+                  "endLine": 101,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 13,
+                  "endLine": 67,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 13,
+                  "endLine": 69,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 13,
+                  "endLine": 71,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 13,
+                  "endLine": 72,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeTypeControllerTests.cs",
                 "region": {
                   "startLine": 42,
@@ -1946,156 +2096,6 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 13,
-                  "endLine": 42,
-                  "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 13,
-                  "endLine": 44,
-                  "endColumn": 73
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 46,
-                  "startColumn": 13,
-                  "endLine": 46,
-                  "endColumn": 75
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 17,
-                  "endLine": 49,
-                  "endColumn": 79
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 17,
-                  "endLine": 50,
-                  "endColumn": 97
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
-                "region": {
-                  "startLine": 85,
-                  "startColumn": 13,
-                  "endLine": 85,
-                  "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeTypeControllerTests.cs",
                 "region": {
                   "startLine": 63,
@@ -2198,9 +2198,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 66,
+                  "startLine": 43,
                   "startColumn": 13,
-                  "endLine": 66,
+                  "endLine": 43,
                   "endColumn": 63
                 }
               }
@@ -2223,10 +2223,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 68,
+                  "startLine": 45,
                   "startColumn": 13,
-                  "endLine": 68,
-                  "endColumn": 67
+                  "endLine": 45,
+                  "endColumn": 73
                 }
               }
             }
@@ -2248,10 +2248,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 70,
+                  "startLine": 47,
                   "startColumn": 13,
-                  "endLine": 70,
-                  "endColumn": 67
+                  "endLine": 47,
+                  "endColumn": 75
                 }
               }
             }
@@ -2273,10 +2273,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 71,
-                  "startColumn": 13,
-                  "endLine": 71,
-                  "endColumn": 85
+                  "startLine": 50,
+                  "startColumn": 17,
+                  "endLine": 50,
+                  "endColumn": 79
                 }
               }
             }
@@ -2290,18 +2290,18 @@
           }
         },
         {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/ProductControllerTests.cs",
                 "region": {
-                  "startLine": 100,
-                  "startColumn": 13,
-                  "endLine": 100,
-                  "endColumn": 63
+                  "startLine": 51,
+                  "startColumn": 17,
+                  "endLine": 51,
+                  "endColumn": 97
                 }
               }
             }
@@ -2310,7 +2310,7 @@
             "warningLevel": 1,
             "customProperties": {
               "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
+              "ModelName": "AreEqual"
             }
           }
         },
@@ -2415,31 +2415,6 @@
           }
         },
         {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 110,
-                  "startColumn": 13,
-                  "endLine": 110,
-                  "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
           "ruleId": "NUnit2045",
           "level": "note",
           "message": "Call independent Assert statements from inside an Assert.Multiple",
@@ -2490,10 +2465,210 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
                 "region": {
+                  "startLine": 190,
+                  "startColumn": 13,
+                  "endLine": 190,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 13,
+                  "endLine": 193,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 13,
+                  "endLine": 195,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
                   "startLine": 130,
                   "startColumn": 13,
                   "endLine": 130,
                   "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 211,
+                  "startColumn": 13,
+                  "endLine": 211,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2018",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 13,
+                  "endLine": 165,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "NotNull"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 13,
+                  "endLine": 166,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 13,
+                  "endLine": 110,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 225,
+                  "startColumn": 13,
+                  "endLine": 225,
+                  "endColumn": 69
                 }
               }
             }
@@ -2640,6 +2815,356 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
                 "region": {
+                  "startLine": 212,
+                  "startColumn": 13,
+                  "endLine": 212,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "NotNull"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 213,
+                  "startColumn": 13,
+                  "endLine": 213,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 214,
+                  "startColumn": 13,
+                  "endLine": 214,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 217,
+                  "startColumn": 13,
+                  "endLine": 217,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 13,
+                  "endLine": 160,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 162,
+                  "startColumn": 13,
+                  "endLine": 162,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 13,
+                  "endLine": 166,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2037",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(collection, Does.Contain(instance)), instead of the classic model, ClassicAssert.Contains(instance, collection)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 17,
+                  "endLine": 169,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "Contains"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2018",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 13,
+                  "endLine": 247,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "NotNull"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 13,
+                  "endLine": 256,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 248,
+                  "startColumn": 13,
+                  "endLine": 248,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2038",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 249,
+                  "startColumn": 13,
+                  "endLine": 249,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "IsInstanceOf"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 252,
+                  "startColumn": 13,
+                  "endLine": 252,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2005",
+          "level": "warning",
+          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
+                  "startLine": 253,
+                  "startColumn": 13,
+                  "endLine": 253,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "HasToleranceValue": "False",
+              "ModelName": "AreEqual"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2018",
+          "level": "note",
+          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
+                "region": {
                   "startLine": 143,
                   "startColumn": 13,
                   "endLine": 143,
@@ -2765,234 +3290,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
                 "region": {
-                  "startLine": 160,
+                  "startLine": 270,
                   "startColumn": 13,
-                  "endLine": 160,
-                  "endColumn": 71
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 162,
-                  "startColumn": 13,
-                  "endLine": 162,
-                  "endColumn": 82
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 166,
-                  "startColumn": 13,
-                  "endLine": 166,
-                  "endColumn": 67
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2037",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(collection, Does.Contain(instance)), instead of the classic model, ClassicAssert.Contains(instance, collection)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 169,
-                  "startColumn": 17,
-                  "endLine": 169,
-                  "endColumn": 69
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "Contains"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2018",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 165,
-                  "startColumn": 13,
-                  "endLine": 165,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "NotNull"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 166,
-                  "startColumn": 13,
-                  "endLine": 166,
-                  "endColumn": 59
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 190,
-                  "startColumn": 13,
-                  "endLine": 190,
-                  "endColumn": 71
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 193,
-                  "startColumn": 13,
-                  "endLine": 193,
-                  "endColumn": 71
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 195,
-                  "startColumn": 13,
-                  "endLine": 195,
-                  "endColumn": 73
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 211,
-                  "startColumn": 13,
-                  "endLine": 211,
+                  "endLine": 270,
                   "endColumn": 63
                 }
               }
@@ -3003,256 +3303,6 @@
             "customProperties": {
               "HasToleranceValue": "False",
               "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2018",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 212,
-                  "startColumn": 13,
-                  "endLine": 212,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "NotNull"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 213,
-                  "startColumn": 13,
-                  "endLine": 213,
-                  "endColumn": 59
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 214,
-                  "startColumn": 13,
-                  "endLine": 214,
-                  "endColumn": 70
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 217,
-                  "startColumn": 13,
-                  "endLine": 217,
-                  "endColumn": 68
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 225,
-                  "startColumn": 13,
-                  "endLine": 225,
-                  "endColumn": 69
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2018",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, ClassicAssert.NotNull(expr)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 247,
-                  "startColumn": 13,
-                  "endLine": 247,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "NotNull"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 248,
-                  "startColumn": 13,
-                  "endLine": 248,
-                  "endColumn": 59
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 249,
-                  "startColumn": 13,
-                  "endLine": 249,
-                  "endColumn": 64
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 252,
-                  "startColumn": 13,
-                  "endLine": 252,
-                  "endColumn": 60
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2005",
-          "level": "warning",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, ClassicAssert.AreEqual(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/RecipeControllerTests.cs",
-                "region": {
-                  "startLine": 253,
-                  "startColumn": 13,
-                  "endLine": 253,
-                  "endColumn": 66
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "AreEqual"
             }
           }
         },
@@ -3269,31 +3319,6 @@
                   "startColumn": 13,
                   "endLine": 241,
                   "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 256,
-                  "startColumn": 13,
-                  "endLine": 256,
-                  "endColumn": 69
                 }
               }
             }
@@ -3453,31 +3478,6 @@
             "customProperties": {
               "HasToleranceValue": "False",
               "ModelName": "AreEqual"
-            }
-          }
-        },
-        {
-          "ruleId": "NUnit2038",
-          "level": "note",
-          "message": "Consider using the constraint model, Assert.That(actual, Is.InstanceOf(expected)), instead of the classic model, ClassicAssert.IsInstanceOf(expected, actual)",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/source/repos/Recipes_API/Recipes_APIS/TestProject1/UserControllerTests.cs",
-                "region": {
-                  "startLine": 270,
-                  "startColumn": 13,
-                  "endLine": 270,
-                  "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "HasToleranceValue": "False",
-              "ModelName": "IsInstanceOf"
             }
           }
         },

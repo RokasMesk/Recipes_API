@@ -35,7 +35,9 @@ XC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\DTO\Comm
 _C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\DTO\ChangePasswordDTO.csutf-8Z
 QC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\Comment.csutf-8b
 YC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Models\ApplicationUser.csutf-8z
-oC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\ApplicationDbContextModelSnapshot.csutf-8~
+oC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\ApplicationDbContextModelSnapshot.csutf-8‡
+|C:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240505220524_AddIsVerifiedToRecipee.Designer.csutf-8|
+sC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240505220524_AddIsVerifiedToRecipee.csutf-8~
 sC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421182110_komentarai_v2.Designer.csutf-8s
 jC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421182110_komentarai_v2.csutf-8{
 pC:\Users\ASUS\source\repos\Recipes_API\Recipes_APIS\Recipes_API\Migrations\20240421172137_komentarai.Designer.csutf-8p
