@@ -23,8 +23,8 @@ namespace Recipe.Controllers
         {
             _recipeRepository = recipeRepository;
             _productRepository = _productRepository = productRepo;
-            _recipeTypeRepository=recipeTypeRepository;
-            _userManager= userManager;
+            _recipeTypeRepository = recipeTypeRepository;
+            _userManager = userManager;
         }
         [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeDTO request)
@@ -92,29 +92,7 @@ namespace Recipe.Controllers
             };
             return Ok(response);
         }
-        [HttpGet("nonverified")]
-        public async Task<IActionResult> GetNonVerifiedRecipes()
-        {
-            var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
-            var response = new List<RecipeDTO>();
 
-            foreach (var recipe in nonVerifiedRecipes)
-            {
-                if (recipe.Title != null)
-                {
-                    response.Add(new RecipeDTO
-                    {
-                        Id = recipe.Id,
-                        Title = recipe.Title,
-                        ShortDescription = recipe.ShortDescription,
-                        Description = recipe.Description,
-                        ImageUrl = recipe.ImageUrl,
-                        // Map other properties as needed
-                    });
-                }
-            }
-            return Ok(response);
-        }
 
         [HttpPut]
         [Route("{id:int}")]
@@ -211,7 +189,7 @@ namespace Recipe.Controllers
                     RecipeCreatorUserName = recipe.User.UserName,
                     Rating = recipe.Rating,
                     RatedPeopleCount = recipe.RatedPeopleCount,
-                }) ; 
+                });
             }
             return Ok(response);
         }
@@ -283,27 +261,27 @@ namespace Recipe.Controllers
             var response = recipes
                 .Where(recipe => recipe is not null)
                 .Select(recipe => new RecipeDTO
-            {
-                Id = recipe.Id,
-                Title = recipe.Title,
-                ShortDescription = recipe.ShortDescription,
-                Description = recipe.Description,
-                ImageUrl = recipe.ImageUrl,
-                Preparation = recipe.Preparation,
-                SkillLevel = recipe.SkillLevel,
-                TimeForCooking = recipe.TimeForCooking,
-                Type = new RecipeType
                 {
-                    Id = recipe.Type.Id,
-                    Type = recipe.Type.Type
-                },
-                Products = recipe.Products.Select(x => new ProductDTO
-                {
-                    Id = x.Id,
-                    ProductName = x.ProductName == null ? "" : x.ProductName,
-                }).ToList(),
-                RecipeCreatorUserName = user.UserName
-            }).ToList();
+                    Id = recipe.Id,
+                    Title = recipe.Title,
+                    ShortDescription = recipe.ShortDescription,
+                    Description = recipe.Description,
+                    ImageUrl = recipe.ImageUrl,
+                    Preparation = recipe.Preparation,
+                    SkillLevel = recipe.SkillLevel,
+                    TimeForCooking = recipe.TimeForCooking,
+                    Type = new RecipeType
+                    {
+                        Id = recipe.Type.Id,
+                        Type = recipe.Type.Type
+                    },
+                    Products = recipe.Products.Select(x => new ProductDTO
+                    {
+                        Id = x.Id,
+                        ProductName = x.ProductName == null ? "" : x.ProductName,
+                    }).ToList(),
+                    RecipeCreatorUserName = user.UserName
+                }).ToList();
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             return Ok(response);
@@ -347,7 +325,7 @@ namespace Recipe.Controllers
             }
             return Ok(response);
         }
-        
+
 
         [HttpPost("Rate")]
         public async Task<IActionResult> RateRecipe([FromBody] RecipeRatingDTO ratingDTO)
@@ -366,7 +344,7 @@ namespace Recipe.Controllers
         }
 
         [HttpPost("{recipeId:int}/comments")]
-        public async Task<IActionResult> AddComment(CommentDTO comment) 
+        public async Task<IActionResult> AddComment(CommentDTO comment)
         {
             var commentInsert = new Comment
             {
@@ -424,8 +402,35 @@ namespace Recipe.Controllers
         public async Task<IActionResult> GetAllNonVerifiedRecipes()
         {
             var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
-            
-            return Ok(nonVerifiedRecipes);
+            var response = new List<RecipeDTO>();
+            foreach (var recipe in nonVerifiedRecipes)
+            {
+                response.Add(new RecipeDTO
+                {
+                    Id = recipe.Id,
+                    Title = recipe.Title,
+                    ShortDescription = recipe.ShortDescription,
+                    Description = recipe.Description,
+                    ImageUrl = recipe.ImageUrl,
+                    Preparation = recipe.Preparation,
+                    SkillLevel = recipe.SkillLevel,
+                    TimeForCooking = recipe.TimeForCooking,
+                    Type = new RecipeType
+                    {
+                        Id = recipe.Type.Id,
+                        Type = recipe.Type.Type
+                    },
+                    Products = recipe.Products.Select(x => new ProductDTO
+                    {
+                        Id = x.Id,
+                        ProductName = x.ProductName == null ? "" : x.ProductName,
+                    }).ToList(),
+                    RecipeCreatorUserName = recipe.User.UserName,
+                    Rating = recipe.Rating,
+                    RatedPeopleCount = recipe.RatedPeopleCount,
+                });
+            }
+            return Ok(response);
         }
     }
 }
