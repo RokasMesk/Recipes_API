@@ -206,18 +206,8 @@ namespace Recipe.Repositories.Implementation
 
         public async Task<IEnumerable<Recipee>> GetAllNonVerifiedRecipes()
         {
-            var nonVerifiedRecipes = await _db.Recipes.Where(x => !x.IsVerified).ToListAsync();
-            var recipeDTOs = nonVerifiedRecipes.Select(recipe => new Recipee
-            {
-                Id = recipe.Id,
-                Title = recipe.Title,
-                ShortDescription = recipe.ShortDescription,
-                Description = recipe.Description,
-                ImageUrl = recipe.ImageUrl,
-                // Map other properties as needed
-            }).ToList();
-            return recipeDTOs;
-        }
+			return await _db.Recipes.Where(x=> !x.IsVerified).Include(x => x.User).Include(x => x.Products).Include(x => x.Type).ToListAsync();
+		}
 
     }
 }
