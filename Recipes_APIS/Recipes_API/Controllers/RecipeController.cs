@@ -92,29 +92,7 @@ namespace Recipe.Controllers
             };
             return Ok(response);
         }
-        [HttpGet("nonverified")]
-        public async Task<IActionResult> GetNonVerifiedRecipes()
-        {
-            var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
-            var response = new List<RecipeDTO>();
 
-            foreach (var recipe in nonVerifiedRecipes)
-            {
-                if (recipe.Title != null)
-                {
-                    response.Add(new RecipeDTO
-                    {
-                        Id = recipe.Id,
-                        Title = recipe.Title,
-                        ShortDescription = recipe.ShortDescription,
-                        Description = recipe.Description,
-                        ImageUrl = recipe.ImageUrl,
-                        // Map other properties as needed
-                    });
-                }
-            }
-            return Ok(response);
-        }
 
         [HttpPut]
         [Route("{id:int}")]
@@ -424,8 +402,35 @@ namespace Recipe.Controllers
         public async Task<IActionResult> GetAllNonVerifiedRecipes()
         {
             var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
-            
-            return Ok(nonVerifiedRecipes);
+            var response = new List<RecipeDTO>();
+            foreach (var recipe in nonVerifiedRecipes)
+            {
+                response.Add(new RecipeDTO
+                {
+                    Id = recipe.Id,
+                    Title = recipe.Title,
+                    ShortDescription = recipe.ShortDescription,
+                    Description = recipe.Description,
+                    ImageUrl = recipe.ImageUrl,
+                    Preparation = recipe.Preparation,
+                    SkillLevel = recipe.SkillLevel,
+                    TimeForCooking = recipe.TimeForCooking,
+                    Type = new RecipeType
+                    {
+                        Id = recipe.Type.Id,
+                        Type = recipe.Type.Type
+                    },
+                    Products = recipe.Products.Select(x => new ProductDTO
+                    {
+                        Id = x.Id,
+                        ProductName = x.ProductName == null ? "" : x.ProductName,
+                    }).ToList(),
+                    RecipeCreatorUserName = recipe.User.UserName,
+                    Rating = recipe.Rating,
+                    RatedPeopleCount = recipe.RatedPeopleCount,
+                });
+            }
+            return Ok(response);
         }
     }
 }
