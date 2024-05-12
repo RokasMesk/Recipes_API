@@ -420,5 +420,12 @@ namespace Recipe.Controllers
             return NotFound();
         }
 
+        [HttpGet("nonverified")]
+        public async Task<IActionResult> GetAllNonVerifiedRecipes()
+        {
+            var nonVerifiedRecipes = await _recipeRepository.GetAllNonVerifiedRecipes();
+            
+            return Ok(nonVerifiedRecipes);
+        }
     }
 }

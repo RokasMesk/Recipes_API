@@ -219,39 +219,5 @@ namespace Recipe.Repositories.Implementation
             return recipeDTOs;
         }
 
-        //public async Task<IEnumerable<Recipee>> IRecipeRepository.GetAllNonVerifiedRecipes()
-        //{
-        //    var nonVerifiedRecipes = await _db.Recipes.Where(x => !x.IsVerified).ToListAsync();
-        //    var recipeDTOs = nonVerifiedRecipes.Select(recipe => new RecipeDTO
-        //    {
-        //        Id = recipe.Id,
-        //        Title = recipe.Title,
-        //        ShortDescription = recipe.ShortDescription,
-        //        Description = recipe.Description,
-        //        ImageUrl = recipe.ImageUrl,
-        //        // Map other properties as needed
-        //    }).ToList();
-        //    return recipeDTOs;
-        //}
-
-        //public async Task<Recipee?> UpdateVerifiedAsync(Recipee recipe)
-        //{
-        //    var existingRecipe = await _db.Recipes.FirstOrDefaultAsync(x => x.Id == recipe.Id);
-        //    if (existingRecipe == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    existingRecipe.IsVerified = true;
-        //    // Update the verified fields
-        //    existingRecipe.Title = RecipeDTO.Title;
-        //    existingRecipe.ShortDescription = RecipeDTO.ShortDescription;
-        //    existingRecipe.Description = RecipeDTO.Description;
-        //    existingRecipe.ImageUrl = recipeDto.ImageUrl;
-        //    // Update other properties as needed
-
-        //    await _db.SaveChangesAsync();
-        //    return existingRecipe;
-        //}
     }
 }
