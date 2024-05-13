@@ -166,30 +166,33 @@ namespace Recipe.Controllers
             var response = new List<RecipeDTO>();
             foreach (var recipe in recipes)
             {
-                response.Add(new RecipeDTO
+                if (recipe.IsVerified)
                 {
-                    Id = recipe.Id,
-                    Title = recipe.Title,
-                    ShortDescription = recipe.ShortDescription,
-                    Description = recipe.Description,
-                    ImageUrl = recipe.ImageUrl,
-                    Preparation = recipe.Preparation,
-                    SkillLevel = recipe.SkillLevel,
-                    TimeForCooking = recipe.TimeForCooking,
-                    Type = new RecipeType
+                    response.Add(new RecipeDTO
                     {
-                        Id = recipe.Type.Id,
-                        Type = recipe.Type.Type
-                    },
-                    Products = recipe.Products.Select(x => new ProductDTO
-                    {
-                        Id = x.Id,
-                        ProductName = x.ProductName == null ? "" : x.ProductName,
-                    }).ToList(),
-                    RecipeCreatorUserName = recipe.User.UserName,
-                    Rating = recipe.Rating,
-                    RatedPeopleCount = recipe.RatedPeopleCount,
-                });
+                        Id = recipe.Id,
+                        Title = recipe.Title,
+                        ShortDescription = recipe.ShortDescription,
+                        Description = recipe.Description,
+                        ImageUrl = recipe.ImageUrl,
+                        Preparation = recipe.Preparation,
+                        SkillLevel = recipe.SkillLevel,
+                        TimeForCooking = recipe.TimeForCooking,
+                        Type = new RecipeType
+                        {
+                            Id = recipe.Type.Id,
+                            Type = recipe.Type.Type
+                        },
+                        Products = recipe.Products.Select(x => new ProductDTO
+                        {
+                            Id = x.Id,
+                            ProductName = x.ProductName == null ? "" : x.ProductName,
+                        }).ToList(),
+                        RecipeCreatorUserName = recipe.User.UserName,
+                        Rating = recipe.Rating,
+                        RatedPeopleCount = recipe.RatedPeopleCount,
+                    });
+                }
             }
             return Ok(response);
         }

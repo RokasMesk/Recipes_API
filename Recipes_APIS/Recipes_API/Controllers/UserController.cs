@@ -208,48 +208,5 @@ namespace Recipe.Controllers
             }
             return BadRequest("Invalid model state.");
         }
-        [HttpPost]
-        [Route("add-description")]
-        public async Task<IActionResult> AddDescription([FromBody] UserDescriptionDTO model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null)
-                {
-                    return NotFound("User not found.");
-                }
-
-                user.UserDescription = model.UserDescription; // Update the user's description
-                var result = await _userManager.UpdateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    return Ok("Description added successfully.");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                    return BadRequest(ModelState);
-                }
-            }
-            return BadRequest("Invalid model state.");
-        }
-
-        [HttpGet]
-        [Route("get-description")]
-        public async Task<IActionResult> GetDescription([FromQuery] string email)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                return NotFound("User not found.");
-            }
-
-            return Ok(new { UserDescription = user.UserDescription });
-        }
     }
 }
